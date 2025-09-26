@@ -1,0 +1,147 @@
+ <div class="page-wrapper">
+        <header class="header">
+            </header>
+
+        <div class="main-container">
+            <aside class="sidebar-left">
+                 </aside>
+
+            <section class="main-content">
+                <div class="category-grid">
+                    <a href="#" class="category-card">
+                        <img src="https://via.placeholder.com/300x150" alt="Poetry">
+                        <h4>poetry</h4>
+                    </a>
+                    <a href="#" class="category-card">
+                        <img src="https://via.placeholder.com/300x150" alt="Prose">
+                        <h4>prose</h4>
+                    </a>
+                    <a href="#" class="category-card">
+                        <img src="https://via.placeholder.com/300x150" alt="Quotes">
+                        <h4>quotes</h4>
+                    </a>
+                    <a href="#" class="category-card">
+                        <img src="https://via.placeholder.com/300x150" alt="Some Words">
+                        <h4>some words</h4>
+                    </a>
+                </div>
+            </section>
+
+            <aside class="sidebar-right">
+                </aside>
+        </div>
+    </div>
+    Aricles
+
+
+
+
+
+     <!-- Main Container with book-like styling -->
+    <div class="book-container">
+        <div class="book-page">
+            <!-- Header with logo and search -->
+            <header class="header">
+                <div class="logo-container">
+                    <!-- Mail icon -->
+                    <div class="mail-icon">✉</div>
+                    <h1 class="site-title">the unread archive</h1>
+                    <!-- Search bar -->
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="search">
+                        <div class="search-line"></div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">home</a>
+                    <a href="articles.html" class="nav-link">articles</a>
+                    <a href="about.html" class="nav-link">about</a>
+                    <a href="books.html" class="nav-link active">books</a>
+                    <a href="signin.html" class="nav-link">sign in</a>
+                </nav>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Left Sidebar - Articles Menu -->
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">articles</h3>
+                        <ul class="sidebar-menu">
+                            <li><a href="poetry.html" class="sidebar-link">poetry</a></li>
+                            <li><a href="prose.html" class="sidebar-link">prose</a></li>
+                            <li><a href="quotes.html" class="sidebar-link">quotes</a></li>
+                            <li><a href="literature.html" class="sidebar-link">literature</a></li>
+                            <li><a href="small-words.html" class="sidebar-link">small words</a></li>
+                            <li><a href="articles.html" class="sidebar-link">read more.....</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Center Content - Books Grid -->
+                <section class="books-section">
+                    <div class="books-grid">
+                        <!-- The Bell Jar -->
+                        <article class="book-card" data-author="sylvia-plath" data-genre="classic">
+                            <h3 class="book-title">the bell jar</h3>
+                            <div class="book-cover">
+                                <!-- Replace with actual book cover -->
+                                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=200&h=280&fit=crop&crop=edges" alt="The Bell Jar book cover">
+                            </div>
+                        </article>
+
+                        <!-- Franz Kafka -->
+                        <article class="book-card" data-author="franz-kafka" data-genre="classic">
+                            <h3 class="book-title">franz kafka</h3>
+                            <div class="book-cover">
+                                <!-- Replace with actual book cover -->
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=280&fit=crop&crop=edges" alt="Franz Kafka book cover">
+                            </div>
+                        </article>
+
+                        <!-- Oscar Wilde -->
+                        <article class="book-card" data-author="oscar-wilde" data-genre="classic">
+                            <h3 class="book-title">oscar wilde</h3>
+                            <div class="book-cover">
+                                <!-- Replace with actual book cover -->
+                                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=200&h=280&fit=crop&crop=edges" alt="Oscar Wilde book cover">
+                            </div>
+                        </article>
+
+                        <!-- Mocking Bird -->
+                        <article class="book-card" data-author="harper-lee" data-genre="classic">
+                            <h3 class="book-title">mocking bird</h3>
+                            <div class="book-cover">
+                                <!-- Replace with actual book cover -->
+                                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=200&h=280&fit=crop&crop=edges" alt="To Kill a Mockingbird book cover">
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Right Sidebar - Contact -->
+                <aside class="right-sidebar">
+                    <div class="contact-card">
+                        <h4 class="contact-title">contact us</h4>
+                        <p class="contact-link">call</p>
+                        <p class="contact-link">email</p>
+                    </div>
+                </aside>
+            </main>
+
+            <!-- Filter Options -->
+            <div class="filter-section">
+                <div class="filter-container">
+                    <h4 class="filter-title">Filter by:</h4>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Books</button>
+                        <button class="filter-btn" data-filter="author">By Author</button
+
+
+
+
+                        book
+
+                        

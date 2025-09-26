@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unread Archive</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+      /* ------------------ PROFILE ------------------ */
+  .profile {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+  }
+
+  .profile-icon {
+    width: 55px;   /* Bigger size */
+    height: 55px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .profile-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .profile-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 6px;
+    min-width: 160px;
+    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+    z-index: 10;
+  }
+
+  .profile-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #fdfdfd;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: background 0.3s;
+  }
+
+  .profile-dropdown a:hover {
+    background: rgba(255,218,121,0.2);
+    color: #ffda79;
+  }
+
+  .profile:hover .profile-dropdown {
+    display: block;
+  }
+
+
+    body {
+      display: flex;
+      flex-direction: column; /* stack container + footer */
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      background: url("./kamil-kalkan-BJzAjkdMKVo-unsplash.jpg") no-repeat center center/cover;
+      animation: changeBg 20s infinite ease-in-out;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 500px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px; /* reduced gap */
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 15px; /* reduced gap */
+    }
+
+    a {
+      text-decoration: none;
+      padding: 12px 16px; /* smaller button */
+      background: white;
+      color: #333;
+      border-radius: 35px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      font-size: 0.9em;
+    }
+    a:hover {
+      background: #ddd;
+    }
+
+    @keyframes changeBg {
+      0%   { background: url("./kamil-kalkan-BJzAjkdMKVo-unsplash.jpg") no-repeat center center/cover; }
+      25%  { background: url("./jason-leung-T42sWRBM_5E-unsplash.jpg") no-repeat center center/cover; }
+      50%  { background: url("./igor-dresjan-a-p-SVi7i-cQ2MY-unsplash.jpg") no-repeat center center/cover; }
+      75%  { background: url("./lucas-george-wendt-ozU2xpnoN-E-unsplash.jpg") no-repeat center center/cover; }
+      100% { background: url("./kamil-kalkan-BJzAjkdMKVo-unsplash.jpg") no-repeat center center/cover; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #333;
+      background: #ffda79; /* background highlight */
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      background: #ffc94d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <div style="position: absolute; top: 10px; left: 10px; background: rgb(235, 239, 243); padding: 10px 20px; border-radius: 32px;">
+  <a href="./index.html">
+    <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="logo" style="height:60px; width:auto;">
+  </a>
+</div>
+<!-- Profile -->
+    <div class="profile">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" class="profile-icon">
+      <div class="profile-dropdown">
+        <a href="signin.html">Sign In</a>
+        <a href="accomplishments.html">Accomplishments</a>
+      </div>
+    </div>
+    </header>
+  <div class="container">
+    <h1>The Unread Archive</h1>
+    <p>“Discover. Create. Connect. A digital home uniting writers and readers.”</p>
+    <a href="home.html">Enter Site</a>
+  </div>
+  <footer>
+    <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>
+    <p>© 2025 The Unread Archive — A digital home for readers and writers.</p>
+  </footer>
+</body>
+</html>

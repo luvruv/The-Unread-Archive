@@ -1,0 +1,213 @@
+/* ---- Google Font Import ---- */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* font-family: 'Kalam', cursive; -- For headings and handwritten text
+    font-family: 'Lora', serif;   -- For body paragraphs and readable text
+*/
+
+
+/* ---- General Body & Layout Styles ---- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #5D4037; /* Dark reddish-brown background */
+    font-family: 'Lora', serif;
+    color: #333;
+    padding: 40px;
+}
+
+.page-wrapper {
+    background-color: #FDF5E6; /* Creamy paper background */
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+/* ---- Header & Navigation ---- */
+.header {
+    text-align: center;
+    border-bottom: 2px solid #D7CCC8;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.header .site-title {
+    font-family: 'Kalam', cursive;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.header .envelope-icon {
+    width: 40px; /* Simple sketch of an envelope */
+    height: 30px;
+    border: 2px solid #333;
+    position: relative;
+}
+.header .envelope-icon::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 28px;
+    height: 28px;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.main-nav .nav-links {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Kalam', cursive;
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* For hover effect */
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: #8D6E63; /* Softer brown for hover */
+    border-bottom-color: #8D6E63;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form .search-input {
+    border: none;
+    border-bottom: 2px solid #333;
+    background: transparent;
+    font-family: 'Kalam', cursive;
+    font-size: 1.2rem;
+    width: 150px;
+}
+.search-form .search-input:focus {
+    outline: none;
+    border-bottom-color: #8D6E63;
+}
+
+
+/* ---- Main Content Area Layout ---- */
+.main-container {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px; /* 3-column layout */
+    gap: 30px;
+}
+
+
+/* ---- Left Sidebar (Article Categories) ---- */
+.sidebar-left {
+    padding-right: 20px;
+}
+
+.sidebar-left h3 {
+    font-family: 'Kalam', cursive;
+    font-size: 1.8rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #D7CCC8;
+    margin-bottom: 15px;
+}
+
+.sidebar-left ul {
+    list-style-type: none;
+}
+
+.sidebar-left ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: 'Kalam', cursive;
+    font-size: 1.2rem;
+    line-height: 2;
+    transition: color 0.3s;
+}
+
+.sidebar-left ul li a:hover {
+    color: #8D6E63;
+}
+
+
+/* ---- Main Content Panel ---- */
+.main-content {
+    background-color: #EFEBE9; /* Soft grey content background */
+    border-radius: 15px;
+    padding: 30px;
+    min-height: 400px;
+}
+
+
+/* ---- Right Aside (Contact & CTA) ---- */
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-box, .cta-box {
+    background-color: #EFEBE9;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.contact-box h4 {
+    font-family: 'Kalam', cursive;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.contact-box a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    margin: 5px 0;
+    font-family: 'Lora', serif;
+}
+.contact-box a:hover {
+    text-decoration: underline;
+}
+
+/* Primary Call-to-Action Button */
+.cta-button {
+    background-color: #5D4037; /* Use main brand color */
+    color: #FDF5E6; /* Cream text */
+    text-decoration: none;
+    font-family: 'Kalam', cursive;
+    font-size: 1.5rem;
+    padding: 20px;
+    border-radius: 15px;
+    display: block;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.cta-button:hover {
+    background-color: #4E342E; /* Darken on hover */
+    transform: translateY(-2px);
+}

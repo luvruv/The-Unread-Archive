@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags and Setup -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unread Archive - Sign In</title>
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts for handwritten style -->
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Container with book-like styling -->
+    <div class="book-container">
+        <div class="book-page">
+            <!-- Header with logo and search -->
+            <header class="header">
+                <div class="logo-container">
+                    <!-- Mail icon -->
+                    <div class="mail-icon">✉</div>
+                    <h1 class="site-title">the unread archive</h1>
+                    <!-- Search bar -->
+                    <div class="search-container">
+                        <input type="text" class="search-input" placeholder="search">
+                        <div class="search-line"></div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">home</a>
+                    <a href="articles.html" class="nav-link">articles</a>
+                    <a href="about.html" class="nav-link">about</a>
+                    <a href="books.html" class="nav-link">books</a>
+                    <a href="signin.html" class="nav-link active">sign in</a>
+                </nav>
+            </header>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Left Sidebar - Articles Menu -->
+                <aside class="sidebar">
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">articles</h3>
+                        <ul class="sidebar-menu">
+                            <li><a href="poetry.html" class="sidebar-link">poetry</a></li>
+                            <li><a href="prose.html" class="sidebar-link">prose</a></li>
+                            <li><a href="quotes.html" class="sidebar-link">quotes</a></li>
+                            <li><a href="literature.html" class="sidebar-link">literature</a></li>
+                            <li><a href="small-words.html" class="sidebar-link">small words</a></li>
+                            <li><a href="articles.html" class="sidebar-link">read more.....</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Center Content - Sign In Form -->
+                <section class="signin-section">
+                    <div class="signin-card">
+                        <h2 class="signin-title">sign in</h2>
+                        
+                        <form class="signin-form" id="signinForm">
+                            <!-- Name Field -->
+                            <div class="form-group">
+                                <label for="name" class="form-label">name</label>
+                                <div class="form-line"></div>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            
+                            <!-- Username Field -->
+                            <div class="form-group">
+                                <label for="username" class="form-label">username</label>
+                                <div class="form-line"></div>
+                                <input type="text" id="username" name="username" class="form-input" required>
+                            </div>
+                            
+                            <!-- Email Field -->
+                            <div class="form-group">
+                                <label for="email" class="form-label">email</label>
+                                <div class="form-line"></div>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <button type="submit" class="signin-btn">join the archive</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Right Sidebar - Contact -->
+                <aside class="right-sidebar">
+                    <div class="contact-card">
+                        <h4 class="contact-title">contact us</h4>
+                        <p class="contact-link">call</p>
+                        <p class="contact-link">email</p>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            console.log('Searching for:', searchTerm);
+        });
+
+        // Form submission
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const userData = {
+                name: formData.get('name'),
+                username: formData.get('username'),
+                email: formData.get('email')
+            };
+            
+            console.log('User registration data:', userData);
+            alert('Welcome to The Unread Archive! Your account has been created.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+    <!-- Additional CSS for Sign In Page -->
+    <style>
+        /* Sign In Page Specific Styles */
+        .signin-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .signin-card {
+            background-color: var(--card-gray);
+            border-radius: var(--radius-card);
+            padding: var(--space-xl);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .signin-title {
+            font-family: var(--font-script);
+            font-size: var(--font-size-large);
+            margin-bottom: var(--space-xl);
+            color: var(--text-dark);
+        }
+
+        .signin-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--font-size-base);
+            color: var(--text-dark);
+            margin-bottom: var(--space-xs);
+        }
+
+        .form-line {
+            width: 100%;
+            height: 1px;
+            background-color: var(--text-dark);
+            margin-bottom: var(--space-xs);
+        }
+
+        .form-input {
+            width: 100%;
+            background: none;
+            border: none;
+            font-family: var(--font-handwritten);
+            font-size: var(--font-size-base);
+            color: var(--text-dark);
+            padding: var(--space-xs) 0;
+            outline: none;
+        }
+
+        .form-input:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-small);
+            padding: var(--space-xs);
+        }
+
+        .signin-btn {
+            background-color: var(--text-dark);
+            color: var(--book-white);
+            border: none;
+            border-radius: var(--radius-card);
+            padding: var(--space-md) var(--space-lg);
+            font-family: var(--font-handwritten);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: var(--space-md);
+        }
+
+        .signin-btn:hover {
+            background-color: rgba(44, 44, 44, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive design for sign in page */
+        @media (max-width: 768px) {
+            .signin-card {
+                padding: var(--space-lg);
+            }
+        }
