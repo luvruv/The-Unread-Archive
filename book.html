@@ -213,22 +213,22 @@
  /* ------------------ LAYOUT ------------------ */
 
   
-.grid-container {
+  /* .grid-container {
         display: grid;
         justify-content: center;
         text-align: center;
-        grid-template-columns: repeat(3, 220px); /* bigger blocks */
-        grid-gap: 100px; /* more space between */
+        grid-template-columns: repeat(4, 220px); bigger blocks 
+        grid-gap: 100px; /* more space between 
         padding: 20px;
       }
 
       .block {
         width: 220px;
         height: 140px;
-        background: rgba(255, 255, 255, 0.15); /* soft transparent to blend with background */
+        background: rgba(255, 255, 255, 0.15);  soft transparent to blend with background 
         border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 16px; /* smoother corners */
-        backdrop-filter: blur(6px); /* frosted glass effect */
+        border-radius: 16px;  smoother corners 
+        backdrop-filter: blur(6px);  frosted glass effect 
         transition: transform 0.3s ease, background 0.3s ease;
       }
 
@@ -236,6 +236,65 @@
         transform: scale(1.05);
         background: rgba(255, 255, 255, 0.25);
       }
+*/
+
+.books-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  font-family: "Georgia", serif;
+}
+
+.books-list {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.books-list header h2 {
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 3px solid #3b82f6;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.book-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(6px);
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.book-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+  color: #ffda79;
+}
+
+.book-card p {
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .books-section {
+    padding: 20px;
+  }
+  .books-list header h2 {
+    font-size: 1.6rem;
+  }
+}
 
 
 
@@ -307,7 +366,7 @@
   </nav>
   <br><br><br>
   <!-- MAIN LAYOUT -->
-  <main>
+  <!--  <main>
     <div class="grid-container">
   <a href="#"><div class="block">Romance/Dark Romance</div></a>
   <a href="#"><div class="block">Thriller/Horror</div></a>
@@ -319,8 +378,60 @@
   <a href="#"><div class="block">Autobiography/Biography</div></a>
   <a href="#"><div class="block">Fantasy</div></a>
 </div>
+  </main>  -->
 
-  </main>
+  <main class="books-section">
+  <!-- Books Sidebar -->
+  <aside class="books-list">
+    <header>
+      <h2>Books Collection</h2>
+    </header>
+
+    <!-- Book Cards -->
+    <div class="book-card">
+      <h3>The Way of Nagomi</h3>
+      <p>
+        Explains a unique Japanese concept that can help us find and practice a relaxed, effortless form of balance in various areas of life, from food and health to relationships, creativity, and even with ourselves.
+      </p>
+    </div>
+
+    <div class="book-card">
+      <h3>The Algebra of Wealth</h3>
+      <p>
+        A college professor and serial entrepreneur’s personal formula for achieving financial freedom based on focus, Stoicism, time, and diversification, helping you eliminate economic anxiety through well-paid work, diversified investments, and strong financial habits.
+      </p>
+    </div>
+
+    <div class="book-card">
+      <h3>A Tale of Two Cities</h3>
+      <p>
+        Follows two connected families in 18th-century London and Paris, exploring love, loss, murder, and intrigue, while teaching lessons about history, ethics, and human relationships.
+      </p>
+    </div>
+
+    <div class="book-card">
+      <h3>Alchemy</h3>
+      <p>
+        A guide to making magic happen in business and life by teaching you how to practice irrational thinking to stand out and discover powerful solutions to your own and others’ problems.
+      </p>
+    </div>
+
+    <div class="book-card">
+      <h3>In Cold Blood</h3>
+      <p>
+        A groundbreaking “nonfiction novel” that narrates how Dick Hickock and Perry Smith conspired, murdered the Clutter family in Kansas in 1959, and how the police eventually brought them to justice in 1965.
+      </p>
+    </div>
+
+    <div class="book-card">
+      <h3>No Hard Feelings</h3>
+      <p>
+        A practical guide to managing the emotional side of work and building resilience by regaining motivation, handling stress, and improving overall performance across career paths.
+      </p>
+    </div>
+  </aside>
+</main>
+
 <br><br><br>
     <!-- FOOTER -->
   <footer>

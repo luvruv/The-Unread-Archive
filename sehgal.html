@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFT Marketplace</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      background: #111;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #a855f7;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.3s ease;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn-create {
+      background: #a855f7;
+    }
+    .btn-create:hover {
+      background: #9333ea;
+    }
+
+    .btn-wallet {
+      background: #333;
+    }
+    .btn-wallet:hover {
+      background: #444;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 40px;
+      gap: 40px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, #1a0b2e, #0d0d0d); /* black + purple */
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin: 0 0 20px;
+      color: #a855f7;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(128, 0, 255, 0.6);
+    }
+
+    /* Explore Section */
+    .explore {
+      background: #0d0d0d;
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    .explore h2 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .explore p {
+      font-size: 18px;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      line-height: 1.6;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(128, 0, 255, 0.4);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 25px rgba(190, 0, 255, 0.7);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 16px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0 0 8px;
+    }
+
+    .price {
+      font-size: 16px;
+      font-weight: bold;
+      color: #a855f7;
+      margin-bottom: 12px;
+    }
+
+    .btn-buy {
+      background: #a855f7;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      background: #9333ea;
+    }
+
+    /* Trending Section */
+    .trending {
+      background: linear-gradient(135deg, #1a0b2e, #0d0d0d); /* black + purple */
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .trending h2 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #fff;
+    }
+
+    .trending-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .hero-image {
+        justify-content: center;
+        margin-top: 40px;
+      }
+      .product-grid,
+      .trending-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .product-grid,
+      .trending-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .history {
+      padding: 60px 50px;
+      background: linear-gradient(to right, black, #2e003e);
+    }
+
+    .history h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 30px;
+      color: #9b5de5;
+    }
+
+    .history-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .history-details {
+      flex: 1;
+      font-size: 16px;
+      line-height: 1.8;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 15px rgba(155, 93, 229, 0.3);
+    }
+
+    .history-details strong {
+      color: #9b5de5;
+    }
+
+    .history-card {
+      flex: 1;
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .history-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .history-card h3 {
+      margin: 15px 0 10px;
+      font-size: 18px;
+    }
+    
+     .contact {
+      padding: 60px 20px;
+      text-align: center;
+      background: #111;
+    }
+
+    .contact h2 {
+      font-size: 32px;
+      color: #a855f7;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      font-size: 16px;
+      color: #ccc;
+      margin: 8px 0;
+    }
+
+    .newsletter {
+      margin-top: 20px;
+    }
+
+    .newsletter input[type="email"] {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      margin-right: 8px;
+      width: 250px;
+    }
+
+    .newsletter button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #a855f7;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .newsletter button:hover {
+      background: #9333ea;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">NFTopia</div>
+    <nav>
+      <a href="#">Explore</a>
+      <a href="#">Collections</a>
+      <a href="#">Creators</a>
+      <a href="#">Explore Plans</a>
+      <a href="#">History</a>
+    </nav>
+    <div class="header-buttons">
+      <a href="#" class="btn btn-create">+ Create NFT</a>
+      <a href="#" class="btn btn-wallet">Connect Wallet</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Discover, Collect & Sell Extraordinary NFTs</h1>
+      <p>The world's first and largest digital marketplace for crypto collectibles and non-fungible tokens (NFTs).</p>
+    </div>
+    <div class="hero-image">
+      <img src="./WhatsApp Image 2025-09-28 at 18.35.20_3b1eb110.jpg" alt="NFT Showcase">
+    </div>
+  </section>
+
+  <!-- EXPLORE SECTION -->
+  <section class="explore">
+    <h2>Explore NFTs</h2>
+    <p>Discover unique digital assets from talented creators around the world.</p>
+
+    <div class="product-grid">
+      <!-- 9 Product Cards -->
+      <div class="card">
+        <img src="nft1.png" alt="NFT 1">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #1</h3>
+          <p class="price">Price: 0.25 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="./WhatsApp Image 2025-09-28 at 18.34.55_6d4fdc18.jpg" alt="NFT 2">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #2</h3>
+          <p class="price">Price: 0.40 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft3.png" alt="NFT 3">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #3</h3>
+          <p class="price">Price: 0.30 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft4.png" alt="NFT 4">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #4</h3>
+          <p class="price">Price: 0.18 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft5.png" alt="NFT 5">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #5</h3>
+          <p class="price">Price: 0.55 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft6.png" alt="NFT 6">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #6</h3>
+          <p class="price">Price: 0.72 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft7.png" alt="NFT 7">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #7</h3>
+          <p class="price">Price: 0.33 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft8.png" alt="NFT 8">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #8</h3>
+          <p class="price">Price: 0.95 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="nft9.png" alt="NFT 9">
+        <div class="card-content">
+          <h3 class="title">Crypto Art #9</h3>
+          <p class="price">Price: 0.61 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRENDING SECTION -->
+  <section class="trending">
+    <h2>Trending NFTs</h2>
+    <div class="trending-grid">
+      <div class="card">
+        <img src="trend1.png" alt="Trending NFT 1">
+        <div class="card-content">
+          <h3 class="title">Trending Art #1</h3>
+          <p class="price">Price: 1.2 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="trend2.png" alt="Trending NFT 2">
+        <div class="card-content">
+          <h3 class="title">Trending Art #2</h3>
+          <p class="price">Price: 0.85 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="trend3.png" alt="Trending NFT 3">
+        <div class="card-content">
+          <h3 class="title">Trending Art #3</h3>
+          <p class="price">Price: 0.95 BTC</p>
+          <a href="#" class="btn-buy">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="history">
+    <h2>Latest Transaction</h2>
+    <div class="history-container">
+      <div class="history-details">
+        <p><strong>Transaction Hash:</strong> 0x9f8a…f1a</p>
+        <p><strong>Block Number:</strong> 18,234,567</p>
+        <p><strong>Timestamp:</strong> 2024-11-02 14:23:45 UTC</p>
+        <p><strong>From:</strong> 0xAa1b2C3d4E5f67890aBcDeF1234567890aBcDef0</p>
+        <p><strong>To:</strong> 0xB1c2D3e4F5a67890ABcdef1234567890aBCdEf11</p>
+        <p><strong>Collection:</strong> PixelPals</p>
+        <p><strong>Token ID:</strong> #1024 ("PixelPal #1024")</p>
+        <p><strong>Standard:</strong> ERC-721</p>
+        <p><strong>Marketplace:</strong> OpenSea</p>
+        <p><strong>Sale Price:</strong> 2.5 ETH (~$4,500)</p>
+        <p><strong>Fee:</strong> 0.075 ETH (platform + 5% royalty)</p>
+      </div>
+      <div class="history-card">
+        <img src="https://via.placeholder.com/300" alt="Sold NFT">
+        <h3>PixelPal #1024</h3>
+        <p>Sold for 2.5 ETH on OpenSea</p>
+      </div>
+    </div>
+  </section>
+  
+  
+    <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:info@nftopia.com">info@nftopia.com</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+    <p>Stay connected with NFTtopia and never miss an update. Join our newsletter below.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email address" required>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+</body>
+</html>

@@ -5,272 +5,273 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unread Archive - Home</title>
   <style>
-  /* ------------------ RESET ------------------ */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: "Georgia", serif;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    /* ------------------ RESET ------------------ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Georgia", serif;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
 
-    /* ✅ Background image */
-    background: url("./pierre-bamin-tNxldHfqVRU-unsplash.jpg") no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-    z-index: 0;
-  }
+      background: url("./pierre-bamin-tNxldHfqVRU-unsplash.jpg") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      z-index: 0;
+      color: #fdfdfd;
+    }
 
-  /* Overlay for better readability */
-  body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: -1;
-    transition: background 0.5s ease;
-  }
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: -1;
+      transition: background 0.5s ease;
+    }
 
-  /* 🌞 Day mode */
-  @media (prefers-color-scheme: light) {
-    body { color: #1a1a1a; }
-    body::before { background: rgba(255,255,255,0.3); }
-    nav a, aside a, footer a { color: #1a1a1a; text-shadow: 1px 1px 3px rgba(255,255,255,0.8); }
-  }
+    /* ------------------ HEADER ------------------ */
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
 
-  /* 🌙 Night mode */
-  @media (prefers-color-scheme: dark) {
-    body { color: #fdfdfd; }
-    body::before { background: rgba(0,0,0,0.6); }
-    nav a, aside a, footer a { color: #fdfdfd; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
-  }
+    .site-logo {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: white;
+      padding: 8px 16px;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+    .site-logo img {
+      height: 60px;
+      width: auto;
+    }
 
-  /* ------------------ HEADER ------------------ */
-  header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px 20px;
-    position: relative;
-    text-align: center;
-  }
+    .logo {
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
 
-  .logo {
-    font-size: 2.5em;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    text-transform: uppercase;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-  }
+    .tagline {
+      margin-top: 8px;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ffda79;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
 
-  .tagline {
-    font-size: 1.1em;
-    margin-top: 8px;
-    font-style: italic;
-    color: #ffda79;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-  }
+    /* ------------------ PROFILE ------------------ */
+    .profile {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+    }
+    .profile-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .profile-icon:hover {
+      transform: scale(1.1);
+    }
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      margin-top: 12px;
+      background: rgba(0,0,0,0.95);
+      border-radius: 8px;
+      min-width: 180px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.6);
+    }
+    .profile-dropdown a {
+      display: block;
+      padding: 12px 16px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .profile-dropdown a:hover {
+      background: rgba(255,218,121,0.2);
+      color: #ffda79;
+    }
+    .profile:hover .profile-dropdown {
+      display: block;
+    }
 
-  /* ------------------ PROFILE ------------------ */
-  .profile {
-    position: absolute;
-    top: 25px;
-    right: 30px;
-  }
+    /* ------------------ NAV ------------------ */
+    nav {
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 15px 18px;
+      color: #fdfdfd;
+      transition: all 0.3s ease;
+    }
+    nav a:hover, nav a.active {
+      color: #ffda79;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+    }
 
-  .profile-icon {
-    width: 55px;   /* Bigger size */
-    height: 55px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-
-  .profile-icon:hover {
-    transform: scale(1.1);
-  }
-
-  .profile-dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    margin-top: 10px;
-    background: rgba(0,0,0,0.9);
-    border-radius: 6px;
-    min-width: 160px;
-    text-align: left;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.5);
-    z-index: 10;
-  }
-
-  .profile-dropdown a {
-    display: block;
-    padding: 10px 15px;
-    color: #fdfdfd;
-    text-decoration: none;
-    font-size: 0.95em;
-    transition: background 0.3s;
-  }
-
-  .profile-dropdown a:hover {
-    background: rgba(255,218,121,0.2);
-    color: #ffda79;
-  }
-
-  .profile:hover .profile-dropdown {
-    display: block;
-  }
-
-  /* ------------------ NAV ------------------ */
-  nav {
-    width: 100%;
-    background: rgba(0,0,0,0.85);   /* dark semi-transparent bar */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .nav-left, .nav-right {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-
-  nav a {
-    text-decoration: none;
-    font-weight: 500;
-    padding: 15px 18px;
-    color: #fdfdfd;
-    transition: all 0.3s ease;
-  }
-
-  nav a:hover {
-    color: #ffda79;
-    background: rgba(255,255,255,0.1);
-    border-radius: 6px;
-  }
-
-  /* Dropdown */
-  .dropdown {
-    position: relative;
-  }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    background: rgba(0,0,0,0.95);
-    min-width: 180px;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  }
-  .dropdown-content a {
-    display: block;
-    padding: 10px 14px;
-  }
-  .dropdown-content a:hover {
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(0,0,0,0.95);
+      border-radius: 6px;
+      min-width: 180px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px 14px;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+     .dropdown-content a:hover {
     background: rgba(255,218,121,0.1);
     color: #ffda79;
   }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  /* Search box */
-  .search-box {
+    /* Search box */
+    .search-box {
   position: absolute;
   right: 20px;   /* ✅ forces to right */
-}
-  .search-box input {
-    padding: 12px 36px;
-    border: none;
-    border-radius: 20px;
-    outline: none;
-    font-size: 0.9em;
-    text-align: right;
-  }
-  .nav-left, .nav-right .search-box {
+    }
+    .search-box input {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9em;
+      text-align: right;
+    }
+    .nav-left, .nav-right .search-box {
   gap: 76px;
 }
 
-  /* ------------------ LAYOUT ------------------ */
- 
-  .grid-container {
-        display: grid;
-        justify-content: center;
-        text-align: center;
-        grid-template-columns: repeat(3, 220px); /* bigger blocks */
-        grid-gap: 100px; /* more space between */
-        padding: 20px;
-        color: white;
-      }
+    /* ------------------ GRID LAYOUT ------------------ */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
 
-      .block {
-        width: 220px;
-        height: 140px;
-        background: rgba(255, 255, 255, 0.15); /* soft transparent to blend with background */
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 16px; /* smoother corners */
-        backdrop-filter: blur(6px); /* frosted glass effect */
-        display: flex;
-        transition: transform 0.3s ease, background 0.3s ease;
-        text-align: center;
-        justify-content: center;
-        top: 50%;
-      }
+    .block {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+      color: #fff;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .block:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+    .block h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #ffda79;
+    }
+    .block p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
 
-      .block:hover {
-        transform: scale(1.05);
-        background: rgba(255, 255, 255, 0.25);
-      }
+    /* ------------------ FOOTER ------------------ */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #ddd;
+      margin-top: auto;
+    }
+    footer a {
+      color: #ffda79;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
 
-  /* ------------------ FOOTER ------------------ */
-  footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-  }
-  footer a {
-    color: #ffda79;
-    text-decoration: none;
-  }
-  footer a:hover { text-decoration: underline; }
+    /* ------------------ RESPONSIVE ------------------ */
+    @media (max-width: 768px) {
+      .logo { font-size: 2rem; }
+      .tagline { font-size: 1rem; }
+      nav a { padding: 10px 12px; font-size: 0.9em; }
+    }
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header>
-    <div style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px 20px; border-radius: 32px;">
-  <a href="./index.html">
-    <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="logo" style="height:60px; width:auto;">
-  </a>
-</div>
+    <div class="site-logo">
+      <a href="./index.html">
+        <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="The Unread Archive logo">
+      </a>
+    </div>
 
-    <div class="logo"><span>✉</span> THE UNREAD ARCHIVE</div>
+    <div class="logo">✉ THE UNREAD ARCHIVE</div>
     <p class="tagline">Your digital sanctuary for timeless words.</p>
 
     <!-- Profile -->
     <div class="profile">
-      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" class="profile-icon">
-      <div class="profile-dropdown">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile icon" class="profile-icon">
+      <div class="profile-dropdown" role="menu">
         <a href="signin.html">Sign In</a>
         <a href="accomplishments.html">Accomplishments</a>
       </div>
@@ -281,7 +282,7 @@
   <nav>
     <div class="nav-container">
       <div class="nav-left">
-        <a href="home.html">Home</a>
+        <a href="home.html" class="active">Home</a>
         <a href="about.html">About</a>
         <div class="dropdown">
           <a href="#">Categories ▾</a>
@@ -294,36 +295,58 @@
           </div>
         </div>
         <a href="articles.html">Articles</a>
-        <a href="books.html">Books</a>
-        <a href="./signin.html">Sign In</a>
+        <a href="book.html">Books</a>
       </div>
       <div class="nav-right">
         <div class="search-box">
-          <input style="text-align: right;" value="" type="text" placeholder="Search...">
+          <input type="text" placeholder="Search...">
         </div>
       </div>
     </div>
   </nav>
-<br><br><br>
-  <!-- MAIN LAYOUT -->
+
+  <!-- MAIN CONTENT -->
   <main>
-       <div class="grid-container">
-         <a href="">
-      <div class="block">Short Stories<br>“A world of imagination told in brevity and depth.”<br>“Snapshots of life, emotions, and ideas wrapped in concise storytelling.”</div></a>
-      <a href="">
-      <div class="block">Novels <br>“Stories that stay with you long after the last chapter closes.”<br>“Where worlds expand, and time bends to story.”</div></a>
-      <a href=""><div class="block">Comics <br> “Where words and pictures collide to tell tales.” <br>“Adventures sketched in color and imagination.”</div></a>
-      <a href=""><div class="block">Trending Reads <br> “Fresh picks capturing readers’ hearts worldwide.” <br>“Join the buzz with the hottest reads.”</div></a>
-      <a href=""><div class="block">Quotes <br>“Brief lines, infinite meaning.” <br> “Echoes of wisdom in a few words.”</div></a>
-      <a href=""><div class="block">Community Spotlight <br>“A stage for our readers and writers to be seen.”<br>“Highlighting the heart of The Unread Archive—its people.”</div></a>
-      <a href=""><div class="block">News <br>News delivers updates on what’s happening locally, nationally, or globally. <br> News is a record of current events communicated through media.</div></a>
-      <a href=""><div class="block">Join Community <br>To connect with like-minded people and share experiences. <br>Step into a place where everyone contributes, learns, and thrives.</div></a>
-      <a href=""><div class="block">Post <br>A written piece you publish to share your thoughts or ideas. <br>Written entry that adds your voice to a conversation.</div></a>
+    <div class="grid-container">
+      <a href="short-stories.html" class="block">
+        <h3>Short Stories</h3>
+        <p>Snapshots of life, emotions, and ideas wrapped in concise storytelling.</p>
+      </a>
+      <a href="novels.html" class="block">
+        <h3>Novels</h3>
+        <p>Stories that stay with you long after the last chapter closes.</p>
+      </a>
+      <a href="comics.html" class="block">
+        <h3>Comics</h3>
+        <p>Adventures sketched in color and imagination.</p>
+      </a>
+      <a href="trending.html" class="block">
+        <h3>Trending Reads</h3>
+        <p>Fresh picks capturing readers’ hearts worldwide.</p>
+      </a>
+      <a href="quotes.html" class="block">
+        <h3>Quotes</h3>
+        <p>Brief lines, infinite meaning—echoes of wisdom in a few words.</p>
+      </a>
+      <a href="community.html" class="block">
+        <h3>Community Spotlight</h3>
+        <p>Highlighting the heart of The Unread Archive—its people.</p>
+      </a>
+      <a href="news.html" class="block">
+        <h3>News</h3>
+        <p>Updates on what’s happening locally, nationally, and globally.</p>
+      </a>
+      <a href="join.html" class="block">
+        <h3>Join Community</h3>
+        <p>Step into a place where everyone contributes, learns, and thrives.</p>
+      </a>
+      <a href="post.html" class="block">
+        <h3>Post</h3>
+        <p>Publish your thoughts or ideas and add your voice to the archive.</p>
+      </a>
     </div>
-
-
   </main>
-<br><br><br>
+
   <!-- FOOTER -->
   <footer>
     <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>

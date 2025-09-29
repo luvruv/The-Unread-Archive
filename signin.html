@@ -1,232 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags and Setup -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Unread Archive - Sign In</title>
-    
-    <!-- CSS Link -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Google Fonts for handwritten style -->
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In - The Unread Archive</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Georgia", serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+
+      /* Background image */
+      background: url("./pierre-bamin-tNxldHfqVRU-unsplash.jpg") no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+      z-index: 0;
+    }
+
+    /* Overlay */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: -1;
+    }
+
+    /* Header (same style) */
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      color: #fff;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .tagline {
+      font-size: 1.1em;
+      margin-top: 8px;
+      font-style: italic;
+      color: #ffda79;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+    }
+
+    /* Sign-in form wrapper */
+    .signin-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      padding: 40px;
+    }
+
+    .signin-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(6px);
+      padding: 40px 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 100%;
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .signin-box h2 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      color: #ffda79;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .form-group input:focus {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .signin-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: #3b82f6;
+      color: #fff;
+      transition: background 0.3s ease;
+    }
+
+    .signin-btn:hover {
+      background: #2563eb;
+    }
+
+    .extra-links {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .extra-links a {
+      color: #ffda79;
+      text-decoration: none;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #fff;
+    }
+
+    footer a {
+      color: #ffda79;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <!-- Main Container with book-like styling -->
-    <div class="book-container">
-        <div class="book-page">
-            <!-- Header with logo and search -->
-            <header class="header">
-                <div class="logo-container">
-                    <!-- Mail icon -->
-                    <div class="mail-icon">✉</div>
-                    <h1 class="site-title">the unread archive</h1>
-                    <!-- Search bar -->
-                    <div class="search-container">
-                        <input type="text" class="search-input" placeholder="search">
-                        <div class="search-line"></div>
-                    </div>
-                </div>
-                
-                <!-- Navigation Menu -->
-                <nav class="main-nav">
-                    <a href="index.html" class="nav-link">home</a>
-                    <a href="articles.html" class="nav-link">articles</a>
-                    <a href="about.html" class="nav-link">about</a>
-                    <a href="books.html" class="nav-link">books</a>
-                    <a href="signin.html" class="nav-link active">sign in</a>
-                </nav>
-            </header>
+  
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><span>✉</span> THE UNREAD ARCHIVE</div>
+    <p class="tagline">Sign in to your literary sanctuary</p>
+  </header>
 
-            <!-- Main Content Area -->
-            <main class="main-content">
-                <!-- Left Sidebar - Articles Menu -->
-                <aside class="sidebar">
-                    <div class="sidebar-card">
-                        <h3 class="sidebar-title">articles</h3>
-                        <ul class="sidebar-menu">
-                            <li><a href="poetry.html" class="sidebar-link">poetry</a></li>
-                            <li><a href="prose.html" class="sidebar-link">prose</a></li>
-                            <li><a href="quotes.html" class="sidebar-link">quotes</a></li>
-                            <li><a href="literature.html" class="sidebar-link">literature</a></li>
-                            <li><a href="small-words.html" class="sidebar-link">small words</a></li>
-                            <li><a href="articles.html" class="sidebar-link">read more.....</a></li>
-                        </ul>
-                    </div>
-                </aside>
-
-                <!-- Center Content - Sign In Form -->
-                <section class="signin-section">
-                    <div class="signin-card">
-                        <h2 class="signin-title">sign in</h2>
-                        
-                        <form class="signin-form" id="signinForm">
-                            <!-- Name Field -->
-                            <div class="form-group">
-                                <label for="name" class="form-label">name</label>
-                                <div class="form-line"></div>
-                                <input type="text" id="name" name="name" class="form-input" required>
-                            </div>
-                            
-                            <!-- Username Field -->
-                            <div class="form-group">
-                                <label for="username" class="form-label">username</label>
-                                <div class="form-line"></div>
-                                <input type="text" id="username" name="username" class="form-input" required>
-                            </div>
-                            
-                            <!-- Email Field -->
-                            <div class="form-group">
-                                <label for="email" class="form-label">email</label>
-                                <div class="form-line"></div>
-                                <input type="email" id="email" name="email" class="form-input" required>
-                            </div>
-                            
-                            <!-- Submit Button -->
-                            <button type="submit" class="signin-btn">join the archive</button>
-                        </form>
-                    </div>
-                </section>
-
-                <!-- Right Sidebar - Contact -->
-                <aside class="right-sidebar">
-                    <div class="contact-card">
-                        <h4 class="contact-title">contact us</h4>
-                        <p class="contact-link">call</p>
-                        <p class="contact-link">email</p>
-                    </div>
-                </aside>
-            </main>
+  <!-- SIGN IN FORM -->
+  <div class="signin-container">
+    <div class="signin-box">
+      <h2>Sign In</h2>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required/>
         </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required/>
+        </div>
+        <button type="submit" class="signin-btn">Sign In</button>
+      </form>
+      <div class="extra-links">
+        <p><a href="#">Forgot Password?</a></p>
+        <p>Don’t have an account? <a href="#">Register here</a></p>
+      </div>
     </div>
+  </div>
 
-    <!-- JavaScript -->
-    <script>
-        // Search functionality
-        document.querySelector('.search-input').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            console.log('Searching for:', searchTerm);
-        });
+  <!-- FOOTER -->
+  <footer>
+    <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>
+    <p>© 2025 The Unread Archive — A digital home for readers and writers.</p>
+  </footer>
 
-        // Form submission
-        document.getElementById('signinForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const userData = {
-                name: formData.get('name'),
-                username: formData.get('username'),
-                email: formData.get('email')
-            };
-            
-            console.log('User registration data:', userData);
-            alert('Welcome to The Unread Archive! Your account has been created.');
-            
-            // Reset form
-            this.reset();
-        });
-
-        // Navigation active state
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
-
-    <!-- Additional CSS for Sign In Page -->
-    <style>
-        /* Sign In Page Specific Styles */
-        .signin-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .signin-card {
-            background-color: var(--card-gray);
-            border-radius: var(--radius-card);
-            padding: var(--space-xl);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .signin-title {
-            font-family: var(--font-script);
-            font-size: var(--font-size-large);
-            margin-bottom: var(--space-xl);
-            color: var(--text-dark);
-        }
-
-        .signin-form {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-lg);
-        }
-
-        .form-group {
-            text-align: left;
-        }
-
-        .form-label {
-            display: block;
-            font-size: var(--font-size-base);
-            color: var(--text-dark);
-            margin-bottom: var(--space-xs);
-        }
-
-        .form-line {
-            width: 100%;
-            height: 1px;
-            background-color: var(--text-dark);
-            margin-bottom: var(--space-xs);
-        }
-
-        .form-input {
-            width: 100%;
-            background: none;
-            border: none;
-            font-family: var(--font-handwritten);
-            font-size: var(--font-size-base);
-            color: var(--text-dark);
-            padding: var(--space-xs) 0;
-            outline: none;
-        }
-
-        .form-input:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: var(--radius-small);
-            padding: var(--space-xs);
-        }
-
-        .signin-btn {
-            background-color: var(--text-dark);
-            color: var(--book-white);
-            border: none;
-            border-radius: var(--radius-card);
-            padding: var(--space-md) var(--space-lg);
-            font-family: var(--font-handwritten);
-            font-size: var(--font-size-base);
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: var(--space-md);
-        }
-
-        .signin-btn:hover {
-            background-color: rgba(44, 44, 44, 0.8);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Responsive design for sign in page */
-        @media (max-width: 768px) {
-            .signin-card {
-                padding: var(--space-lg);
-            }
-        }
+</body>
+</html>

@@ -207,53 +207,85 @@
   gap: 76px;
 }
  /* ------------------ LAYOUT ------------------ */
-main {
-    display: flex;
-    flex: 1;
-    padding: 20px;
-    gap: 200px;
-    justify-content: center;
-    text-align: center;
+/* Main wrapper like an open book */
+.book-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.book-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* left & right page */
+  max-width: 1000px;
+  width: 100%;
+  background: #fdfcf7;
+  border: 2px solid #d4cfc4;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Center spine */
+.book-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: #c9c3b8;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Page styling */
+.book-page {
+  padding: 30px;
+  line-height: 1.7;
+  color: #2d2d2d;
+  font-size: 1rem;
+  background: linear-gradient(to bottom, #fff, #f9f7f2);
+}
+
+/* Left page alignment */
+.left-page {
+  border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Right page alignment */
+.right-page {
+  border-left: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Headings */
+.book-page header h2 {
+  font-size: 1.6rem;
+  color: #3b3b3b;
+  border-bottom: 2px solid #c9c3b8;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  font-family: "Georgia", serif;
+}
+
+/* Paragraphs */
+.book-page p {
+  margin-bottom: 15px;
+}
+
+/* Responsive: stack like scroll */
+@media (max-width: 900px) {
+  .book-wrapper {
+    grid-template-columns: 1fr;
   }
- main {
-      width: 80%;
-      max-width: 1200px;
-    }
+  .book-wrapper::before {
+    display: none; /* hide spine */
+  }
+  .left-page, .right-page {
+    border: none;
+  }
+}
 
-    .about-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-    }
-
-    .about-card {
-      flex: 1;
-      background-color: #2a2a2a;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
-    .about-card header h2 {
-      margin-top: 0;
-      font-size: 1.5rem;
-      border-left: 4px solid #3b82f6;
-      padding-left: 10px;
-      color: #ffffff;
-    }
-
-    .about-card p {
-      line-height: 1.6;
-      margin-bottom: 15px;
-      color: #dcdcdc;
-    }
-
-  /* Responsive: Stack on smaller screens */
-    @media (max-width: 900px) {
-      .about-section {
-        flex-direction: column;
-      }
-    }
 /* ------------------ FOOTER ------------------ */
   footer {
     text-align: center;
@@ -321,69 +353,56 @@ main {
             <!-- Main Content Area -->
              <!-- MAIN LAYOUT -->
   <main>
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="about-content-wrapper">
-            
-            <!-- Left Column: Introduction -->
-            <article class="about-card about-left">
-                <header>
-                    <h2>Welcome to The Unread Archive</h2>
-                </header>
-                <p>
-                    A place where words truly live and pages gracefully turn. In a world 
-                    overflowing with endless feeds, fleeting updates, and constant noise, 
-                    we offer you a pause—a chance to slow down and rediscover the quiet 
-                    magic of storytelling. This space is more than a collection of texts; 
-                    it is a carefully curated sanctuary of stories, reflections, and 
-                    artistic expression.
-                </p>
-                
-                <p>
-                    Here, every page invites you on a journey, every narrative whispers 
-                    with meaning, and every piece of writing becomes an experience to be 
-                    savored rather than scrolled past. The Archive reconnects us to the 
-                    timeless joy of reading—the rhythm of unfolding words, the depth of 
-                    imagination, and the intimacy of shared human thought.
-                </p>
-                <p>
-                    In this world, stories are not simply consumed; they are uncovered, 
-                    cherished, and lived.
-                </p>
-            </article>
-<br>
-            <!-- Right Column: Explore & Contribute -->
-            <aside class="about-card about-right">
-                <header>
-                    <h2>Discover & Contribute</h2>
-                </header>
-                <p>
-                    Dive into our ever-growing collection of articles, essays, and 
-                    literary works, each carefully chosen to inspire, challenge, 
-                    and delight. Whether you’re searching for your next favorite 
-                    read or exploring new perspectives through our curated 
-                    recommendations, you’ll always find something meaningful here.
-                </p>
-                <p>
-                    Beyond reading, this is a space for creation—an open invitation 
-                    to add your voice to the conversation by sharing your own 
-                    stories, reflections, or art. Together, we shape a living 
-                    archive: a dynamic blend of ideas and imagination where every 
-                    contribution enriches the whole.
-                </p>
-                <p>
-                    Here, you can lose yourself in the pages of another’s narrative 
-                    and, at the same time, discover pieces of yourself in the act 
-                    of writing.
-                </p>
-            </aside>
+  <!-- About Section -->
+  <section class="book-section">
+    <div class="book-wrapper">
 
-        </div>
-    </section>
+      <!-- Left Page -->
+      <article class="book-page left-page">
+        <header>
+          <h2>Welcome to The Unread Archive</h2>
+        </header>
+        <p>
+          A place where words truly live and pages gracefully turn. In a world 
+          overflowing with endless feeds, fleeting updates, and constant noise, 
+          we offer you a pause—a chance to slow down and rediscover the quiet 
+          magic of storytelling.
+        </p>
+        <p>
+          This space is more than a collection of texts; it is a carefully curated 
+          sanctuary of stories, reflections, and artistic expression.
+        </p>
+        <p>
+          In this world, stories are not simply consumed; they are uncovered, 
+          cherished, and lived.
+        </p>
+      </article>
+
+      <!-- Right Page -->
+      <aside class="book-page right-page">
+        <header>
+          <h2>Discover & Contribute</h2>
+        </header>
+        <p>
+          Dive into our ever-growing collection of articles, essays, and 
+          literary works, each carefully chosen to inspire, challenge, 
+          and delight.
+        </p>
+        <p>
+          Beyond reading, this is a space for creation—an open invitation 
+          to add your voice to the conversation by sharing your own 
+          stories, reflections, or art.
+        </p>
+        <p>
+          Together, we shape a living archive: a dynamic blend of ideas and 
+          imagination where every contribution enriches the whole.
+        </p>
+      </aside>
+
+    </div>
+  </section>
 </main>
 
-        </div>
-    </div>
   <!-- FOOTER -->
   <footer>
     <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>
