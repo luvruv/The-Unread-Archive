@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unread Archive | Home</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  color: #fdfdfd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+}
+/* Tiny stars animation */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  animation: moveStars 60s linear infinite;
+  opacity: 0.5;
+}
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+    /* ---------------- HEADER ---------------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      position: relative;
+      z-index: 1000;
+    }
+    .site-logo img {
+      height: 50px;
+      background-color: #fff;
+    }
+    /* Branding block for logo + tagline */
+    .branding {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 15px;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffda79;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: #cccccc;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+      justify-content: center;
+    }
+    /* Profile */
+    .profile {
+      position: relative;
+      display: inline-block;
+    }
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: rgba(0,0,0,0.95);
+      border-radius: 6px;
+      min-width: 160px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .profile-dropdown a {
+      display: block;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .profile-dropdown a:hover {
+      background: rgba(255,218,121,0.1);
+      color: #ffda79;
+    }
+    .profile:hover .profile-dropdown {
+      display: block;
+    }
+    /* ------------------ NAV ------------------ */
+    nav {
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 15px 18px;
+      color: #fdfdfd;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffda79;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+    }
+    /* Dropdown */
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      background: rgba(0,0,0,0.95);
+      min-width: 180px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 10px 14px;
+    }
+    .dropdown-content a:hover {
+      background: rgba(255,218,121,0.1);
+      color: #ffda79;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* Search box */
+    .search-box {
+      position: absolute;
+      right: 20px;
+    }
+    .search-box input {
+      padding: 12px 36px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9em;
+      text-align: right;
+    }
+    /* ------------------ MAIN ------------------ */
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      padding: 40px;
+      border-radius: 12px;
+      backdrop-filter: blur(6px); /* frosted glass effect */
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      color: #ffda79;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      color: #fdfdfd;
+    }
+    .container a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 24px;
+      background: #ffda79;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+    .container a:hover {
+      background: #ffc94d;
+    }
+    /* ------------------ FOOTER ------------------ */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+    }
+    footer a {
+      color: #333;
+      background: #ffda79;
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      background: #ffc94d;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="site-logo">
+      <a href="./index.html">
+        <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="The Unread Archive logo">
+      </a>
+    </div>
+    <!-- Branding block -->
+    <div class="branding">
+      <div class="logo">✉ THE UNREAD ARCHIVE</div>
+      <p class="tagline">Your digital sanctuary for timeless words.</p>
+    </div>
+    <!-- Profile -->
+    <div class="profile">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile icon" class="profile-icon">
+      <div class="profile-dropdown" role="menu">
+        <a href="signin.html">Sign In</a>
+        <a href="accomplishments.html">Accomplishments</a>
+      </div>
+    </div>
+  </header>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="#">Archive ▾</a>
+          <div class="dropdown-content">
+            <a href="poetry.html">Poetry</a>
+            <a href="prose.html">Prose</a>
+            <a href="quotes.html">Quotes</a>
+            <a href="literature.html">Literature</a>
+            <a href="small-words.html">Small Words</a>
+          </div>
+        </div>
+        <a href="article.html">Articles</a>
+        <a href="book.html">Books</a>
+        <a href="./signin.html">Sign In</a>
+      </div>
+      <div class="nav-right">
+        <div class="search-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- MAIN SECTION -->
+  <main>
+    <div class="container">
+      <h1>The Unread Archive</h1>
+      <p>“Discover. Create. Connect. A digital home uniting writers and readers.”</p>
+      <a href="home1.html">Enter Site</a>
+    </div>
+  </main>
+  <!-- FOOTER -->
+  <footer>
+    <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>
+    <p>© 2025 The Unread Archive — A digital home for readers and writers.</p>
+  </footer>
+</body>
+</html>
