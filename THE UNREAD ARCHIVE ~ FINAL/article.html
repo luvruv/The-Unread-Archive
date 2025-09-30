@@ -19,7 +19,7 @@
       display: flex;
       flex-direction: column;
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      overflow-x: hidden; /* ✅ allow scrolling but hide horizontal overflow */
+      overflow-x: hidden; /* ✅ prevent horizontal scroll */
     }
     /* Tiny stars animation */
     body::before {
@@ -48,8 +48,9 @@
     .site-logo img {
       height: 50px;
       background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.4);
     }
-    /* Branding block for logo + tagline */
     .branding {
       display: flex;
       flex-direction: column;
@@ -68,7 +69,6 @@
       color: #cccccc;
       letter-spacing: 0.5px;
       margin-top: 2px;
-      justify-content: center;
     }
     /* Profile */
     .profile {
@@ -120,8 +120,6 @@
       align-items: center;
       gap: 30px;
       font-size: large;
-font-size: large;
-
     }
     .nav-left, .nav-right {
       display: flex;
@@ -164,7 +162,6 @@ font-size: large;
       margin: auto;
       align-items: stretch;
     }
-
     .left-rect {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
@@ -174,15 +171,13 @@ font-size: large;
       flex-direction: column;
       justify-content: flex-start;
     }
-
+    /* ✅ Right Grid Fix */
     .right-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
       gap: 20px;
-      align-items: stretch;
+      align-items: start; /* ensures all cards align from top */
     }
-
     .content-card {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
@@ -191,57 +186,68 @@ font-size: large;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* balances content */
-      min-height: 250px; /* ensures consistent height */
+      justify-content: flex-start;
+      min-height: 280px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
+    /* ✅ Make Poetry and Short Stories cards equal size */
+    .right-grid article.content-card {
+      height: 100%; /* stretch */
+    }
+    .right-grid article.content-card:nth-child(1),
+    .right-grid article.content-card:nth-child(2) {
+      min-height: 320px; /* force equal height */
+    }
     .content-card h2 {
-      margin-top: 0;
+      margin: 0 0 12px;
       font-size: 1.2rem;
       border-bottom: 2px solid rgba(255,255,255,0.3);
-      padding-bottom: 5px;
+      padding-bottom: 6px;
     }
-
+    .content-card p, 
+    .content-card ul {
+      margin: 0;
+      padding: 0;
+      list-style: disc;
+      padding-left: 18px;
+      line-height: 1.6;
+    }
+    .content-card ul li {
+      margin-bottom: 6px;
+    }
+    .content-card a {
+      color: #ffda79;
+      text-decoration: none;
+    }
+    .content-card a:hover {
+      text-decoration: underline;
+    }
     blockquote {
       font-style: italic;
       margin: 10px 0;
     }
-
     cite {
       display: block;
       text-align: right;
       font-size: 0.9rem;
       opacity: 0.8;
     }
-
-    ul {
-      padding-left: 18px;
-    }
-
-    a {
-      color: #fffa90;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
     /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      margin-top: auto;      /* ✅ keeps footer at bottom */
-      background: #111;      /* dark solid footer background */
-      color: #fdfdfd;        /* white text */
+      margin-top: auto;
+      background: #111;
+      color: #fdfdfd;
       position: relative;
       bottom: 0;
       left: 0;
       width: 100%;
     }
     footer a {
-      color: #111;         /* dark text */
-      background: #ffda79; /* yellow background */
+      color: #111;
+      background: #ffda79;
       padding: 5px 12px;
       border-radius: 20px;
       text-decoration: none;
@@ -260,12 +266,10 @@ font-size: large;
         <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="The Unread Archive logo">
       </a>
     </div>
-    <!-- Branding block -->
     <div class="branding">
       <div class="logo">✉ THE UNREAD ARCHIVE</div>
       <p class="tagline">Your digital sanctuary for timeless words.</p>
     </div>
-    <!-- Profile -->
     <div class="profile">
       <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile icon" class="profile-icon">
       <div class="profile-dropdown" role="menu">
@@ -294,8 +298,7 @@ font-size: large;
   </nav>
   <!-- MAIN SECTION -->
   <div class="container">
-    
-    <!-- Quotes Section in left rect -->
+    <!-- Quotes Section -->
     <div class="left-rect">
       <h2>Quotes</h2>
       <blockquote>“The opposite of love is not hate, it's indifference...” <cite>— Elie Wiesel</cite></blockquote>
@@ -307,58 +310,50 @@ font-size: large;
       <blockquote>"I have a deeply hidden and inarticulate desire..." <cite>— Virginia Woolf</cite></blockquote>
       <blockquote>"What is the meaning of life? ... little daily miracles..." <cite>— Virginia Woolf</cite></blockquote>
     </div>
-
     <!-- Right Grid Sections -->
     <div class="right-grid">
-      
-      <!-- Poetry Section -->
       <article class="content-card">
         <header><h2>Poetry</h2></header>
         <ul>
           <li><a href="https://discoverpoetry.com/poems/robert-frost/the-road-not-taken/" target="_blank">The Road Not Taken – Robert Frost</a></li>
           <li><a href="https://discoverpoetry.com/poems/walt-whitman/o-captain-my-captain/" target="_blank">O Captain! My Captain! – Walt Whitman</a></li>
           <li><a href="https://discoverpoetry.com/poems/robert-frost/fire-and-ice/" target="_blank">Fire and Ice – Robert Frost</a></li>
-          <li><a href="https://discoverpoetry.com/poems/william-wordsworth/the-world-is-too-much-with-us/" target="_blank">The World is Too Much With Us – William Wordsworth</a></li>
+          <li><a href="https://discoverpoetry.com/poems/william-wordsworth/the-world-is-too-much-with-us/" target="_blank">The World is Too Much With Us – Wordsworth</a></li>
           <li><a href="https://discoverpoetry.com/poems/emily-dickinson/i-felt-a-funeral-in-my-brain/" target="_blank">I Felt a Funeral in My Brain – Emily Dickinson</a></li>
           <li><a href="https://discoverpoetry.com/poems/walt-whitman/a-noiseless-patient-spider/" target="_blank">A Noiseless Patient Spider – Walt Whitman</a></li>
+          <li><a href="https://discoverpoetry.com/poems/olive-a-wadsworth/over-in-the-meadow/" target="_blank">Over in the Meadow – Olive A. Wadsworth</a></li>
+          <li><a href="https://discoverpoetry.com/poems/william-cullen-bryant/the-gladness-of-nature/" target="_blank">The Gladness of Nature – William Cullen Bryant</a></li>
         </ul>
       </article>
-
-      <!-- Short Stories Section -->
       <article class="content-card">
         <header><h2>Short Stories</h2></header>
         <ul>
           <li><a href="https://americanliterature.com/author/matsuo-basho/short-story/the-aged-mother/" target="_blank">The Aged Mother – Matsuo Basho</a></li>
           <li><a href="https://americanliterature.com/author/oscar-wilde/short-story/the-nightingale-and-the-rose/" target="_blank">The Nightingale and the Rose – Oscar Wilde</a></li>
-          <li><a href="https://americanliterature.com/author/bjrnstjerne-bjrnson/short-story/the-father/" target="_blank">The Father – Bjørnstjerne Bjørnson</a></li>
-          <li><a href="https://americanliterature.com/author/aleksandr-i-kuprin/short-story/a-clump-of-lilacs/" target="_blank">A Clump of Lilacs – Aleksandr Kuprin</a></li>
+          <li><a href="https://americanliterature.com/author/bjrnstjerne-bjrnson/short-story/the-father/" target="_blank">The Father – Bjørnson</a></li>
+          <li><a href="https://americanliterature.com/author/aleksandr-i-kuprin/short-story/a-clump-of-lilacs/" target="_blank">A Clump of Lilacs – Kuprin</a></li>
           <li><a href="https://americanliterature.com/author/hh-munro-saki/short-story/the-toys-of-peace/" target="_blank">The Toys of Peace – H.H. Munro (Saki)</a></li>
+          <li><a href="https://americanliterature.com/author/o-henry/short-story/the-romance-of-a-busy-broker" target="_blank">The Romance of a Busy Broker – O. Henry</a></li>
+          <li><a href="https://americanliterature.com/author/hans-christian-andersen/short-story/the-little-match-girl" target="_blank">The Little Match Girl – Hans Christian Andersen</a></li>
+          <li><a href="https://americanliterature.com/author/jack-london/short-story/to-build-a-fire" target="_blank">To Build a Fire – Jack London</a></li>
+          <li><a href="https://americanliterature.com/author/ambrose-bierce/short-story/an-occurrence-at-owl-creek-bridge" target="_blank">An Occurrence at Owl Creek Bridge – Ambrose Bierce</a></li>
+          <li><a href="https://americanliterature.com/author/w-w-jacobs/short-story/the-monkeys-paw" target="_blank">The Monkey's Paw –  W. W. Jacobs</a></li>
         </ul>
       </article>
-
-      <!-- Sidebar Section -->
       <div class="content-card">
-        <header><h2>Community Spotlight</h2></header>
+        <header><h2><a href="./archive.html">Community Spotlight</a></h2></header>
         <p>Discover rising voices in our writing community. Each week, we highlight fresh perspectives, creative works, and hidden gems submitted by readers and writers just like you.</p>
       </div>
-
       <div class="content-card">
         <header><h2>Did You Know?</h2></header>
         <p>The term “novel” comes from the Italian word <em>novella</em>, meaning “new.” It was first used to describe short stories during the Renaissance before evolving into the long-form works we know today.</p>
       </div>
-
     </div>
   </div>
-
   <!-- FOOTER -->
   <footer>
-    <p>
-      Contact us: 
-      <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a>
-    </p>
-    <p>
-      &copy; 2025 The Unread Archive — A digital home for readers and writers.
-    </p>
+    <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>
+    <p>&copy; 2025 The Unread Archive — A digital home for readers and writers.</p>
   </footer>
 </body>
 </html>
