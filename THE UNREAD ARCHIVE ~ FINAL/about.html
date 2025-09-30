@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,30 +12,30 @@
       box-sizing: border-box;
     }
     body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  color: #fdfdfd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
-}
-/* Tiny stars animation */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 200%;
-  height: 200%;
-  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-  animation: moveStars 60s linear infinite;
-  opacity: 0.5;
-}
-@keyframes moveStars {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100px); }
-}
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #fdfdfd;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden; /* ✅ allow scrolling but hide horizontal overflow */
+    }
+    /* Tiny stars animation */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 60s linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100px); }
+    }
     /* ---------------- HEADER ---------------- */
     header {
       display: flex;
@@ -138,31 +137,6 @@ body::before {
       background: rgba(255,255,255,0.1);
       border-radius: 6px;
     }
-    /* Dropdown */
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 50px;
-      left: 0;
-      background: rgba(0,0,0,0.95);
-      min-width: 180px;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 10px 14px;
-    }
-    .dropdown-content a:hover {
-      background: rgba(255,218,121,0.1);
-      color: #ffda79;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
     /* Search box */
     .search-box {
       position: absolute;
@@ -177,52 +151,90 @@ body::before {
       text-align: right;
     }
     /* ------------------ MAIN ------------------ */
-    main {
-      flex: 1;
+
+  /* ------------------ MAIN ------------------ */
+    
+    /* ------------------ LAYOUT ------------------ */
+    /* Main wrapper like an open book */
+    .book-section {
       display: flex;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 50px 20px;
-    }
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       padding: 40px;
-      border-radius: 12px;
-      backdrop-filter: blur(6px); /* frosted glass effect */
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #ffda79;
+
+    .book-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* left & right page */
+      max-width: 1000px;
+      width: 100%;
+      background: #fdfcf7;
+      border: 2px solid #d4cfc4;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
     }
-    p {
-      font-size: 1.2em;
+
+    /* Center spine */
+    .book-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #c9c3b8;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Page styling */
+    .book-page {
+      padding: 30px;
+      line-height: 1.7;
+      color: #2d2d2d;
+      font-size: 1rem;
+      background: linear-gradient(to bottom, #fff, #f9f7f2);
+    }
+
+    /* Left page alignment */
+    .left-page {
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Right page alignment */
+    .right-page {
+      border-left: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* Headings */
+    .book-page header h2 {
+      font-size: 1.6rem;
+      color: #3b3b3b;
+      border-bottom: 2px solid #c9c3b8;
+      padding-bottom: 8px;
       margin-bottom: 15px;
-      color: #fdfdfd;
+      font-family: "Georgia", serif;
     }
-    .container a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 24px;
-      background: #ffda79;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 30px;
-      transition: 0.3s;
+
+    /* Paragraphs */
+    .book-page p {
+      margin-bottom: 15px;
     }
-    .container a:hover {
-      background: #ffc94d;
+
+    /* Responsive: stack like scroll */
+    @media (max-width: 900px) {
+      .book-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .book-wrapper::before {
+        display: none; /* hide spine */
+      }
+      .left-page, .right-page {
+        border: none;
+      }
     }
-  /* ------------------ FOOTER ------------------ */
+
+    /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
@@ -235,7 +247,6 @@ body::before {
       left: 0;
       width: 100%;
     }
-
     footer a {
       color: #111;         /* dark text */
       background: #ffda79; /* yellow background */
@@ -244,11 +255,9 @@ body::before {
       text-decoration: none;
       font-weight: bold;
     }
-
     footer a:hover {
       background: #ffc94d;
     }
-
   </style>
 </head>
 <body>
@@ -279,16 +288,7 @@ body::before {
       <div class="nav-left">
         <a href="home.html">Home</a>
         <a href="about.html">About</a>
-        <div class="dropdown">
-          <a href="#">Archive ▾</a>
-          <div class="dropdown-content">
-            <a href="poetry.html">Poetry</a>
-            <a href="prose.html">Prose</a>
-            <a href="quotes.html">Quotes</a>
-            <a href="literature.html">Literature</a>
-            <a href="small-words.html">Small Words</a>
-          </div>
-        </div>
+        <a href="archive.html">Archive</a>
         <a href="article.html">Articles</a>
         <a href="book.html">Books</a>
         <a href="./signin.html">Sign In</a>
@@ -301,12 +301,59 @@ body::before {
     </div>
   </nav>
   <!-- MAIN SECTION -->
+ <!-- MAIN SECTION -->
   <main>
-    <div class="container">
-      <h1>The Unread Archive</h1>
-      <p>“Discover. Create. Connect. A digital home uniting writers and readers.”</p>
-    </div>
+    <!-- About Section -->
+    <section class="book-section">
+      <div class="book-wrapper">
+
+        <!-- Left Page -->
+        <article class="book-page left-page">
+          <header>
+            <h2>Welcome to The Unread Archive</h2>
+          </header>
+          <p>
+            A place where words truly live and pages gracefully turn. In a world 
+            overflowing with endless feeds, fleeting updates, and constant noise, 
+            we offer you a pause—a chance to slow down and rediscover the quiet 
+            magic of storytelling.
+          </p>
+          <p>
+            This space is more than a collection of texts; it is a carefully curated 
+            sanctuary of stories, reflections, and artistic expression.
+          </p>
+          <p>
+            In this world, stories are not simply consumed; they are uncovered, 
+            cherished, and lived.
+          </p>
+        </article>
+
+        <!-- Right Page -->
+        <aside class="book-page right-page">
+          <header>
+            <h2>Discover & Contribute</h2>
+          </header>
+          <p>
+            Dive into our ever-growing collection of articles, essays, and 
+            literary works, each carefully chosen to inspire, challenge, 
+            and delight.
+          </p>
+          <p>
+            Beyond reading, this is a space for creation—an open invitation 
+            to add your voice to the conversation by sharing your own 
+            stories, reflections, or art.
+          </p>
+          <p>
+            Together, we shape a living archive: a dynamic blend of ideas and 
+            imagination where every contribution enriches the whole.
+          </p>
+        </aside>
+
+      </div>
+    </section>
   </main>
+
+
   <!-- FOOTER -->
   <footer>
     <p>
