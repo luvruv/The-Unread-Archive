@@ -19,18 +19,19 @@
       display: flex;
       flex-direction: column;
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      overflow-x: hidden; /* ✅ allow scrolling but hide horizontal overflow */
+      overflow-x: hidden; /* ✅ hide horizontal overflow */
     }
     /* Tiny stars animation */
     body::before {
       content: '';
-      position: absolute;
+      position: fixed;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
       background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
       animation: moveStars 60s linear infinite;
       opacity: 0.5;
+      z-index: 0;
     }
     @keyframes moveStars {
       from { transform: translateY(0); }
@@ -46,10 +47,11 @@
       z-index: 1000;
     }
     .site-logo img {
-      height: 50px;
-      background-color: #fff;
+      height: 55px;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.4);
     }
-    /* Branding block for logo + tagline */
+    /* Branding block */
     .branding {
       display: flex;
       flex-direction: column;
@@ -57,18 +59,16 @@
       margin-left: 15px;
     }
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: #ffda79;
       letter-spacing: 1.5px;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .tagline {
       font-size: 1rem;
       color: #cccccc;
       letter-spacing: 0.5px;
-      margin-top: 2px;
-      justify-content: center;
     }
     /* Profile */
     .profile {
@@ -76,15 +76,18 @@
       display: inline-block;
     }
     .profile-icon {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       cursor: pointer;
+      border: 2px solid #ffda79;
+      background: #fff;
     }
     .profile-dropdown {
       display: none;
       position: absolute;
       right: 0;
+      margin-top: 8px;
       background: rgba(0,0,0,0.95);
       border-radius: 6px;
       min-width: 160px;
@@ -106,6 +109,8 @@
     /* ------------------ NAV ------------------ */
     nav {
       width: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       position: sticky;
       top: 0;
@@ -123,51 +128,111 @@
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
-      gap: 60px;
+      gap: 40px;
     }
     nav a {
       text-decoration: none;
       font-weight: 500;
-      padding: 15px 18px;
+      padding: 14px 18px;
       color: #fdfdfd;
       transition: all 0.3s ease;
+      border-radius: 6px;
     }
     nav a:hover {
       color: #ffda79;
       background: rgba(255,255,255,0.1);
-      border-radius: 6px;
     }
     /* Search box */
-    .search-box {
-      position: absolute;
-      right: 20px;
-    }
     .search-box input {
-      padding: 12px 36px;
+      padding: 10px 30px;
       border: none;
       border-radius: 20px;
       outline: none;
       font-size: 0.9em;
       text-align: right;
     }
-    /* ------------------ MAIN ------------------ */
-
+    /* ------------------ BOOK LAYOUT ------------------ */
+    .book-section {
+      display: flex;
+      justify-content: center;
+      padding: 50px 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .book-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1000px;
+      width: 100%;
+      background: #fdfcf7;
+      border: 2px solid #d4cfc4;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Center spine */
+    .book-wrapper::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #c9c3b8;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+    /* Pages */
+    .book-page {
+      padding: 30px;
+      line-height: 1.7;
+      color: #2d2d2d;
+      font-size: 1rem;
+      background: linear-gradient(to bottom, #fff, #f9f7f2);
+    }
+    .left-page {
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+    .right-page {
+      border-left: 1px solid rgba(0,0,0,0.1);
+    }
+    /* Headings */
+    .book-page header h2 {
+      font-size: 1.6rem;
+      color: #3b3b3b;
+      border-bottom: 2px solid #c9c3b8;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+    .book-page p {
+      margin-bottom: 15px;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .book-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .book-wrapper::before {
+        display: none;
+      }
+      .left-page, .right-page {
+        border: none;
+      }
+    }
     /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      margin-top: auto;      /* ✅ keeps footer at bottom */
-      background: #111;      /* dark solid footer background */
-      color: #fdfdfd;        /* white text */
+      margin-top: auto;
+      background: #111;
+      color: #fdfdfd;
       position: relative;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      z-index: 1;
     }
     footer a {
-      color: #111;         /* dark text */
-      background: #ffda79; /* yellow background */
+      color: #111;
+      background: #ffda79;
       padding: 5px 12px;
       border-radius: 20px;
       text-decoration: none;
@@ -186,12 +251,10 @@
         <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="The Unread Archive logo">
       </a>
     </div>
-    <!-- Branding block -->
     <div class="branding">
       <div class="logo">✉ THE UNREAD ARCHIVE</div>
       <p class="tagline">Your digital sanctuary for timeless words.</p>
     </div>
-    <!-- Profile -->
     <div class="profile">
       <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile icon" class="profile-icon">
       <div class="profile-dropdown" role="menu">
@@ -200,6 +263,7 @@
       </div>
     </div>
   </header>
+
   <!-- NAVIGATION -->
   <nav>
     <div class="nav-container">
@@ -218,8 +282,40 @@
       </div>
     </div>
   </nav>
-  <!-- MAIN SECTION -->
 
+  <!-- MAIN SECTION -->
+  <main>
+    <section class="book-section">
+      <div class="book-wrapper">
+        <!-- Left Page -->
+        <article class="book-page left-page">
+          <img src="./homeimg.jpg" alt="unread archive" style="width:100%;border-radius: 6px; margin-bottom: 20px; height: auto;">
+        </article>
+        <!-- Right Page -->
+        <aside class="book-page right-page">
+          <header>
+            <h2>Welcome to The Unread Archive</h2>
+          </header>
+          <p>
+            Welcome to The Unread Archive. We've digitized the delight of paper and ink. Simply turn the page below to discover our featured piece—a poem, a prose reflection, or a critical literary essay.
+          </p>
+          <p>
+            Here, every unread word finds its voice, and every silent page tells a story. Dive into our curated collection of literary treasures, where the past meets the present in a harmonious dance of words.
+          </p>
+          <p>
+            Our mission is to create a digital sanctuary for readers and writers alike. Whether you're here to explore timeless works or share your own, we invite you to immerse yourself in the world of literature.
+          </p>
+          <p>
+Poems: Verses for the Unspoken <br>
+Prose: Narratives Uncovered <br>
+Book recommendations: Uncover the world of literature and classics <br>
+Create: Share Your Own Pages, share your thoughts <br>
+and much more...
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer>
