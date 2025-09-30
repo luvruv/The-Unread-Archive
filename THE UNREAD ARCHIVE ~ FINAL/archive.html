@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unread Archive | Home</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #fdfdfd;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden; /* ✅ allow scrolling but hide horizontal overflow */
+    }
+    /* Tiny stars animation */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 60s linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100px); }
+    }
+    /* ---------------- HEADER ---------------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      position: relative;
+      z-index: 1000;
+    }
+    .site-logo img {
+      height: 50px;
+      background-color: #fff;
+    }
+    /* Branding block for logo + tagline */
+    .branding {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 15px;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffda79;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: #cccccc;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+      justify-content: center;
+    }
+    /* Profile */
+    .profile {
+      position: relative;
+      display: inline-block;
+    }
+    .profile-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .profile-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: rgba(0,0,0,0.95);
+      border-radius: 6px;
+      min-width: 160px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    .profile-dropdown a {
+      display: block;
+      padding: 10px 14px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .profile-dropdown a:hover {
+      background: rgba(255,218,121,0.1);
+      color: #ffda79;
+    }
+    .profile:hover .profile-dropdown {
+      display: block;
+    }
+    /* ------------------ NAV ------------------ */
+    nav {
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 900;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 15px 18px;
+      color: #fdfdfd;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffda79;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+    }
+    /* Search box */
+    .search-box {
+      position: absolute;
+      right: 20px;
+    }
+    .search-box input {
+      padding: 12px 36px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      font-size: 0.9em;
+      text-align: right;
+    }
+    /* ------------------ MAIN ------------------ */
+
+    /* Page header */
+    .hero{background:#fff;padding:28px 0}
+    .hero h1{font-size:28px;margin:0}
+    .hero p{color:var(--muted);margin-top:6px}
+
+    /* Layout */
+    .main{display:grid;grid-template-columns:260px 1fr;gap:24px;padding:20px 0}
+
+    /* Sidebar */
+    .sidebar{position:sticky;top:18px}
+    .filters{background:linear-gradient(180deg,#fff,#fff);border:1px solid #eef0f3;padding:12px;border-radius:12px}
+    .filters h3{font-size:13px;margin:0 0 8px 0;color:var(--muted)}
+    .categories{display:flex;flex-direction:column;gap:6px}
+    .cat{padding:8px 10px;border-radius:8px;font-size:14px;color:var(--muted);cursor:pointer}
+    .cat:hover{background:#f6f8fb;color:var(--accent)}
+    .search{margin-top:12px}
+    .search input{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ee}
+
+    /* Feed */
+    .feed{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid #eef0f3;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:220px}
+    .card .media{height:140px;background-size:cover;background-position:center}
+    .card .body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .tag{font-size:12px;color:var(--muted)}
+    .title{font-size:16px;font-weight:700;margin:0}
+    .meta{color:var(--muted);font-size:13px}
+    .excerpt{color:#374151;font-size:14px;line-height:1.45}
+    .card .cta{margin-top:auto;display:flex;justify-content:space-between;align-items:center}
+    .subscribe{padding:8px 10px;border-radius:8px;border:1px solid #e6e9ee;background:#fff;font-weight:600}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .main{grid-template-columns:1fr;}
+      .feed{grid-template-columns:repeat(1,1fr)}
+      .sidebar{position:relative}
+    }
+
+    /* Small utilities */
+    .muted{color:var(--muted)}
+    .flex{display:flex;gap:8px;align-items:center}
+    /* ------------------ FOOTER ------------------ */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: auto;      /* ✅ keeps footer at bottom */
+      background: #111;      /* dark solid footer background */
+      color: #fdfdfd;        /* white text */
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    footer a {
+      color: #111;         /* dark text */
+      background: #ffda79; /* yellow background */
+      padding: 5px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      background: #ffc94d;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="site-logo">
+      <a href="./index.html">
+        <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="The Unread Archive logo">
+      </a>
+    </div>
+    <!-- Branding block -->
+    <div class="branding">
+      <div class="logo">✉ THE UNREAD ARCHIVE</div>
+      <p class="tagline">Your digital sanctuary for timeless words.</p>
+    </div>
+    <!-- Profile -->
+    <div class="profile">
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile icon" class="profile-icon">
+      <div class="profile-dropdown" role="menu">
+        <a href="signin.html">Sign In</a>
+        <a href="accomplishments.html">Accomplishments</a>
+      </div>
+    </div>
+  </header>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="archive.html">Archive</a>
+        <a href="article.html">Articles</a>
+        <a href="book.html">Books</a>
+        <a href="./signin.html">Sign In</a>
+      </div>
+      <div class="nav-right">
+        <div class="search-box">
+          <input type="text" placeholder="Search...">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- MAIN SECTION -->
+
+  <section class="hero">
+    <div class="container">
+      <h1>Staff picks</h1>
+      <p class="muted">Curated newsletters and newsletters our team is reading right now.</p>
+    </div>
+  </section>
+
+  <main class="container main">
+    <aside class="sidebar">
+      <div class="filters">
+        <h3>Filter</h3>
+        <div class="categories">
+          <div class="cat">All</div>
+          <div class="cat">Culture</div>
+          <div class="cat">Technology</div>
+          <div class="cat">Business</div>
+          <div class="cat">U.S. Politics</div>
+          <div class="cat">Finance</div>
+          <div class="cat">Food & Drink</div>
+          <div class="cat">Sports</div>
+        </div>
+        <div class="search">
+          <input placeholder="Search staff picks" />
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+      <div class="filters">
+        <h3>Subscribe</h3>
+        <p class="muted" style="font-size:13px">Subscribe to get new staff picks in your inbox.</p>
+        <div style="margin-top:10px"><input style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ee" placeholder="Your email" /></div>
+        <div style="margin-top:10px"><button class="subscribe" style="width:100%">Subscribe</button></div>
+      </div>
+    </aside>
+
+    <section>
+      <div class="feed" aria-live="polite">
+        <!-- Card 1 -->
+        <article class="card">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
+          <div class="body">
+            <div class="tag">Culture • Staff pick</div>
+            <h3 class="title">After Babel</h3>
+            <div class="meta">by Jane Doe — 12k subscribers</div>
+            <p class="excerpt">A fascinating newsletter about language, culture, and the tiny textures of everyday life. Short reads and great links.</p>
+            <div class="cta">
+              <div class="flex muted">Read • 3 min</div>
+              <button class="subscribe">Subscribe</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
+          <div class="body">
+            <div class="tag">Food & Drink</div>
+            <h3 class="title">Time Travel Kitchen</h3>
+            <div class="meta">by Alex Smith — 8.4k subscribers</div>
+            <p class="excerpt">Recipes, memories, and essays that fold together. Perfect for weekend reading and trying a new dinner idea.</p>
+            <div class="cta">
+              <div class="flex muted">Read • 5 min</div>
+              <button class="subscribe">Subscribe</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
+          <div class="body">
+            <div class="tag">Technology</div>
+            <h3 class="title">Two Percent</h3>
+            <div class="meta">by Michael Easter — 20k subscribers</div>
+            <p class="excerpt">Tech picks, product essays, and curated links. A clean mix of deep thinking and short reads.</p>
+            <div class="cta">
+              <div class="flex muted">Read • 4 min</div>
+              <button class="subscribe">Subscribe</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="card">
+          <div class="media" style="background-image:url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=')"></div>
+          <div class="body">
+            <div class="tag">Business</div>
+            <h3 class="title">Well Well Well</h3>
+            <div class="meta">by Rosamund Dean — 6.1k subscribers</div>
+            <p class="excerpt">Business reporting and long reads that break down complicated trends into readable essays.</p>
+            <div class="cta">
+              <div class="flex muted">Read • 8 min</div>
+              <button class="subscribe">Subscribe</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      Contact us: 
+      <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a>
+    </p>
+    <p>
+      &copy; 2025 The Unread Archive — A digital home for readers and writers.
+    </p>
+  </footer>
+</body>
+</html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,30 +12,30 @@
       box-sizing: border-box;
     }
     body {
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  color: #fdfdfd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-  overflow: hidden;
-}
-/* Tiny stars animation */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 200%;
-  height: 200%;
-  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-  animation: moveStars 60s linear infinite;
-  opacity: 0.5;
-}
-@keyframes moveStars {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100px); }
-}
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #fdfdfd;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden; /* ✅ allow scrolling but hide horizontal overflow */
+    }
+    /* Tiny stars animation */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      animation: moveStars 60s linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100px); }
+    }
     /* ---------------- HEADER ---------------- */
     header {
       display: flex;
@@ -138,31 +137,6 @@ body::before {
       background: rgba(255,255,255,0.1);
       border-radius: 6px;
     }
-    /* Dropdown */
-    .dropdown {
-      position: relative;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 50px;
-      left: 0;
-      background: rgba(0,0,0,0.95);
-      min-width: 180px;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    }
-    .dropdown-content a {
-      display: block;
-      padding: 10px 14px;
-    }
-    .dropdown-content a:hover {
-      background: rgba(255,218,121,0.1);
-      color: #ffda79;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
     /* Search box */
     .search-box {
       position: absolute;
@@ -177,52 +151,8 @@ body::before {
       text-align: right;
     }
     /* ------------------ MAIN ------------------ */
-    main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 50px 20px;
-    }
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-      padding: 40px;
-      border-radius: 12px;
-      backdrop-filter: blur(6px); /* frosted glass effect */
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      color: #ffda79;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 15px;
-      color: #fdfdfd;
-    }
-    .container a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 24px;
-      background: #ffda79;
-      color: #000;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 30px;
-      transition: 0.3s;
-    }
-    .container a:hover {
-      background: #ffc94d;
-    }
-  /* ------------------ FOOTER ------------------ */
+
+    /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
@@ -235,7 +165,6 @@ body::before {
       left: 0;
       width: 100%;
     }
-
     footer a {
       color: #111;         /* dark text */
       background: #ffda79; /* yellow background */
@@ -244,11 +173,9 @@ body::before {
       text-decoration: none;
       font-weight: bold;
     }
-
     footer a:hover {
       background: #ffc94d;
     }
-
   </style>
 </head>
 <body>
@@ -279,16 +206,7 @@ body::before {
       <div class="nav-left">
         <a href="home.html">Home</a>
         <a href="about.html">About</a>
-        <div class="dropdown">
-          <a href="#">Archive ▾</a>
-          <div class="dropdown-content">
-            <a href="poetry.html">Poetry</a>
-            <a href="prose.html">Prose</a>
-            <a href="quotes.html">Quotes</a>
-            <a href="literature.html">Literature</a>
-            <a href="small-words.html">Small Words</a>
-          </div>
-        </div>
+        <a href="archive.html">Archive</a>
         <a href="article.html">Articles</a>
         <a href="book.html">Books</a>
         <a href="./signin.html">Sign In</a>
@@ -301,12 +219,8 @@ body::before {
     </div>
   </nav>
   <!-- MAIN SECTION -->
-  <main>
-    <div class="container">
-      <h1>The Unread Archive</h1>
-      <p>“Discover. Create. Connect. A digital home uniting writers and readers.”</p>
-    </div>
-  </main>
+
+
   <!-- FOOTER -->
   <footer>
     <p>
