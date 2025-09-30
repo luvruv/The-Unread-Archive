@@ -49,6 +49,8 @@
     .site-logo img {
       height: 50px;
       background-color: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.4);
     }
     .branding {
       display: flex;
@@ -121,7 +123,6 @@
       align-items: center;
       gap: 30px;
       font-size: large;
-
     }
     .nav-left, .nav-right {
       display: flex;
@@ -155,10 +156,10 @@
     }
     /* ------------------ MAIN ------------------ */
     .main {
-      display:grid;
-      grid-template-columns:260px 1fr;
-      gap:24px;
-      padding:20px 0;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
+      padding: 20px 40px 20px 20px; /* ✅ extra right padding */
       position: relative;
       z-index: 1;
     }
@@ -167,18 +168,17 @@
     .sidebar {
       position: sticky;
       top: 18px;
-      background: rgba(20, 20, 25, 0.9);
-      padding: 16px;
+      background: rgba(20, 20, 25, 0.95);
+      padding: 20px;
       margin: 0 0 20px 0;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      border-radius: 16px; /* ✅ rounder corners */
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35); /* ✅ stronger shadow */
       color: #fdfdfd;
       font-size: 16px;
       border: 1px solid rgba(255,255,255,0.1);
-      max-width: 220px;
+      max-width: 240px;
     }
-    .filters h3 {
-      font-size: 15px;
+    .filters h2 {
       margin-bottom: 10px;
       color: #ffda79;
     }
@@ -202,49 +202,53 @@
 
     /* Feed */
     .feed {
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:18px
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 24px; /* ✅ bigger gap between cards */
+      margin-right: 20px; /* ✅ space from right edge */
     }
     .card {
-      background:#fff;
-      color:#111;
-      border:1px solid #eef0f3;
-      border-radius:12px;
-      overflow:hidden;
-      display:flex;
-      flex-direction:column;
-      min-height:220px
+      background: #fff;
+      color: #111;
+      border: 1px solid #eef0f3;
+      border-radius: 14px; /* ✅ softer rounded corners */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+      padding: 12px; /* ✅ inner padding */
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* ✅ subtle shadow */
     }
     .card .media {
-      height:140px;
-      background-size:cover;
-      background-position:center
+      height: 140px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px; /* ✅ rounded top image corners */
     }
     .card .body {
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-      flex:1
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
     }
-    .tag {font-size:12px;color:#666}
-    .title {font-size:16px;font-weight:700;margin:0}
-    .meta {color:#666;font-size:13px}
-    .excerpt {color:#374151;font-size:14px;line-height:1.45}
+    .tag {font-size: 12px;color: #666}
+    .title {font-size: 16px;font-weight: 700;margin: 0}
+    .meta {color: #666;font-size: 13px}
+    .excerpt {color: #374151;font-size: 14px;line-height: 1.45}
     .card .cta {
-      margin-top:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
     }
     .subscribe {
-      padding:8px 10px;
-      border-radius:8px;
-      border:1px solid #e6e9ee;
-      background:#fff;
-      font-weight:600;
-      cursor:pointer
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #e6e9ee;
+      background: #fff;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     /* Responsive */
@@ -255,8 +259,6 @@
     }
 
     .flex{display:flex;gap:8px;align-items:center}
-
-   
 
     /* ------------------ FOOTER ------------------ */
     footer {
@@ -322,28 +324,24 @@
     </div>
   </nav>
 
-
   <!-- MAIN SECTION -->
   <main class="container main">
     <aside class="sidebar">
       <div class="filters">
-        <h3>Filter</h3>
+        <h2>Filter</h2>
         <div class="categories">
           <div class="cat">All</div>
-          <div class="cat">Culture</div>
-          <div class="cat">Technology</div>
-          <div class="cat">Business</div>
-          <div class="cat">U.S. Politics</div>
-          <div class="cat">Finance</div>
-          <div class="cat">Food & Drink</div>
-          <div class="cat">Sports</div>
+          <div class="cat">Publication Year</div>
+          <div class="cat">Language</div>
+          <div class="cat">Author</div>
+          <div class="cat">Genre</div>
         </div>
       </div>
     </aside>
 
     <section>
       <div class="feed" aria-live="polite">
-        <!-- Cards (unchanged from your code) -->
+        <!-- Cards -->
         <article class="card">
           <div class="media" style="background-image:url('https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=1200&auto=format&fit=crop')"></div>
           <div class="body">
