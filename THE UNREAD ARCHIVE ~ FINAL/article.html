@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unread Archive | Article</title>
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -21,7 +20,6 @@
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
       overflow-x: hidden; /* ✅ prevent horizontal scroll */
     }
-    /* Tiny stars animation */
     body::before {
       content: '';
       position: absolute;
@@ -36,7 +34,6 @@
       from { transform: translateY(0); }
       to { transform: translateY(-100px); }
     }
-    /* ---------------- HEADER ---------------- */
     header {
       display: flex;
       align-items: center;
@@ -70,7 +67,6 @@
       letter-spacing: 0.5px;
       margin-top: 2px;
     }
-    /* Profile */
     .profile {
       position: relative;
       display: inline-block;
@@ -103,7 +99,6 @@
     .profile:hover .profile-dropdown {
       display: block;
     }
-    /* ------------------ NAV ------------------ */
     nav {
       width: 100%;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
@@ -138,7 +133,6 @@
       background: rgba(255,255,255,0.1);
       border-radius: 6px;
     }
-    /* Search box */
     .search-box {
       position: absolute;
       right: 20px;
@@ -151,10 +145,9 @@
       font-size: 0.9em;
       text-align: right;
     }
-    /* ------------------ MAIN ------------------ */
     .container {
       display: grid;
-      grid-template-columns: 1fr 2fr; /* left Quotes, right grid */
+      grid-template-columns: 1fr 2fr; 
       gap: 40px;
       padding: 40px;
       width: 90%;
@@ -171,12 +164,11 @@
       flex-direction: column;
       justify-content: flex-start;
     }
-    /* ✅ Right Grid Fix */
     .right-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
-      align-items: start; /* ensures all cards align from top */
+      align-items: start; 
     }
     .content-card {
       background: rgba(255, 255, 255, 0.05);
@@ -190,9 +182,8 @@
       min-height: 280px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    /* ✅ Make Poetry and Short Stories cards equal size */
     .right-grid article.content-card {
-      height: 100%; /* stretch */
+      height: 100%;
     }
     .right-grid article.content-card:nth-child(1),
     .right-grid article.content-card:nth-child(2) {
@@ -232,7 +223,6 @@
       font-size: 0.9rem;
       opacity: 0.8;
     }
-    /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
@@ -259,7 +249,6 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <div class="site-logo">
       <a href="./index.html">
@@ -278,7 +267,6 @@
       </div>
     </div>
   </header>
-  <!-- NAVIGATION -->
   <nav>
     <div class="nav-container">
       <div class="nav-left">
@@ -296,9 +284,7 @@
       </div>
     </div>
   </nav>
-  <!-- MAIN SECTION -->
   <div class="container">
-    <!-- Quotes Section -->
     <div class="left-rect">
       <h2>Quotes</h2>
       <blockquote>“The opposite of love is not hate, it's indifference...” <cite>— Elie Wiesel</cite></blockquote>
@@ -310,7 +296,6 @@
       <blockquote>"I have a deeply hidden and inarticulate desire..." <cite>— Virginia Woolf</cite></blockquote>
       <blockquote>"What is the meaning of life? ... little daily miracles..." <cite>— Virginia Woolf</cite></blockquote>
     </div>
-    <!-- Right Grid Sections -->
     <div class="right-grid">
       <article class="content-card">
         <header><h2>Poetry</h2></header>
@@ -350,7 +335,6 @@
       </div>
     </div>
   </div>
-  <!-- FOOTER -->
   <footer>
     <p>Contact us: <a href="mailto:contact@unreadarchive.com">contact@unreadarchive.com</a></p>
     <p>&copy; 2025 The Unread Archive — A digital home for readers and writers.</p>
