@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unread Archive | Home</title>
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -37,7 +36,6 @@
       from { transform: translateY(0); }
       to { transform: translateY(-100px); }
     }
-    /* ---------------- HEADER ---------------- */
     header {
       display: flex;
       align-items: center;
@@ -52,7 +50,6 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
       background-color: #fff;
     }
-    /* Branding block */
     .branding {
       display: flex;
       flex-direction: column;
@@ -107,11 +104,8 @@
     .profile:hover .profile-dropdown {
       display: block;
     }
-    /* ------------------ NAV ------------------ */
-    nav {
+      nav {
       width: 100%;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(6px);
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       position: sticky;
       top: 0;
@@ -130,30 +124,32 @@
     .nav-left, .nav-right {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 60px;
     }
     nav a {
       text-decoration: none;
       font-weight: 500;
-      padding: 14px 18px;
+      padding: 15px 18px;
       color: #fdfdfd;
       transition: all 0.3s ease;
-      border-radius: 6px;
     }
     nav a:hover {
       color: #ffda79;
       background: rgba(255,255,255,0.1);
+      border-radius: 6px;
     }
-    /* Search box */
+    .search-box {
+      position: absolute;
+      right: 20px;
+    }
     .search-box input {
-      padding: 10px 30px;
+      padding: 12px 36px;
       border: none;
       border-radius: 20px;
       outline: none;
       font-size: 0.9em;
       text-align: right;
     }
-    /* ------------------ BOOK LAYOUT ------------------ */
     .book-section {
       display: flex;
       justify-content: center;
@@ -173,7 +169,6 @@
       position: relative;
       overflow: hidden;
     }
-    /* Center spine */
     .book-wrapper::before {
       content: "";
       position: absolute;
@@ -184,7 +179,6 @@
       background: #c9c3b8;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     }
-    /* Pages */
     .book-page {
       padding: 30px;
       line-height: 1.7;
@@ -198,7 +192,6 @@
     .right-page {
       border-left: 1px solid rgba(0,0,0,0.1);
     }
-    /* Headings */
     .book-page header h2 {
       font-size: 1.6rem;
       color: #3b3b3b;
@@ -209,7 +202,6 @@
     .book-page p {
       margin-bottom: 15px;
     }
-    /* Responsive */
     @media (max-width: 900px) {
       .book-wrapper {
         grid-template-columns: 1fr;
@@ -221,7 +213,6 @@
         border: none;
       }
     }
-    /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
@@ -246,7 +237,6 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
   <header>
     <div class="site-logo">
       <a href="./index.html">
@@ -265,8 +255,6 @@
       </div>
     </div>
   </header>
-
-  <!-- NAVIGATION -->
   <nav>
     <div class="nav-container">
       <div class="nav-left">
@@ -284,8 +272,6 @@
       </div>
     </div>
   </nav>
-
-  <!-- MAIN SECTION -->
   <main>
     <section class="book-section">
       <div class="book-wrapper">
@@ -319,7 +305,6 @@ and much more...
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <p>
       Contact us: 

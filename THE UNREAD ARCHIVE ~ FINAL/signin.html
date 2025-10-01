@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unread Archive | SignIn</title>
   <style>
-    /* Reset */
+
     * {
       margin: 0;
       padding: 0;
@@ -19,9 +19,9 @@
       display: flex;
       flex-direction: column;
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      overflow-x: hidden; /* ✅ allow scrolling but hide horizontal overflow */
+      overflow-x: hidden; 
     }
-    /* Tiny stars animation */
+  
     body::before {
       content: '';
       position: absolute;
@@ -36,7 +36,7 @@
       from { transform: translateY(0); }
       to { transform: translateY(-100px); }
     }
-    /* ---------------- HEADER ---------------- */
+ 
     header {
       display: flex;
       align-items: center;
@@ -51,7 +51,7 @@
       border-radius: 6px;
       box-shadow: 0 0 8px rgba(0,0,0,0.4);
     }
-    /* Branding block for logo + tagline */
+ 
     .branding {
       display: flex;
       flex-direction: column;
@@ -72,7 +72,7 @@
       margin-top: 2px;
       justify-content: center;
     }
-    /* Profile */
+
     .profile {
       position: relative;
       display: inline-block;
@@ -105,7 +105,7 @@
     .profile:hover .profile-dropdown {
       display: block;
     }
-    /* ------------------ NAV ------------------ */
+
     nav {
       width: 100%;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
@@ -140,7 +140,7 @@
       background: rgba(255,255,255,0.1);
       border-radius: 6px;
     }
-    /* Search box */
+
     .search-box {
       position: absolute;
       right: 20px;
@@ -153,9 +153,7 @@
       font-size: 0.9em;
       text-align: right;
     }
-    /* ------------------ MAIN ------------------ */
-
-    /* Sign-in form wrapper */
+  
     .signin-container {
       display: flex;
       justify-content: center;
@@ -242,23 +240,21 @@
     }
 
 
-
-    /* ------------------ FOOTER ------------------ */
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
-      margin-top: auto;      /* ✅ keeps footer at bottom */
-      background: #111;      /* dark solid footer background */
-      color: #fdfdfd;        /* white text */
+      margin-top: auto;      
+      background: #111;     
+      color: #fdfdfd;        
       position: relative;
       bottom: 0;
       left: 0;
       width: 100%;
     }
     footer a {
-      color: #111;         /* dark text */
-      background: #ffda79; /* yellow background */
+      color: #111;         
+      background: #ffda79;
       padding: 5px 12px;
       border-radius: 20px;
       text-decoration: none;
@@ -270,14 +266,14 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
+
   <header>
     <div class="site-logo">
       <a href="./index.html">
         <img src="./ChatGPT Image Sep 25, 2025, 10_46_26 AM.png" alt="The Unread Archive logo">
       </a>
     </div>
-    <!-- Branding block -->
+  
     <div class="branding">
       <div class="logo">✉ THE UNREAD ARCHIVE</div>
       <p class="tagline">Your digital sanctuary for timeless words.</p>
@@ -291,7 +287,7 @@
       </div>
     </div>
   </header>
-  <!-- NAVIGATION -->
+
   <nav>
     <div class="nav-container">
       <div class="nav-left">
@@ -309,10 +305,7 @@
       </div>
     </div>
   </nav>
-  <!-- MAIN SECTION -->
-<!-- MAIN SECTION -->
 
-<!-- SIGN IN FORM -->
   <div class="signin-container">
     <div class="signin-box">
       <h2>Sign In</h2>
@@ -334,8 +327,6 @@
     </div>
   </div>
 
-
-  <!-- FOOTER -->
   <footer>
     <p>
       Contact us: 

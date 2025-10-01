@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unread Archive | Home</title>
   <style>
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -22,7 +21,6 @@
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
 }
-/* Tiny stars animation */
 body::before {
   content: '';
   position: absolute;
@@ -37,7 +35,6 @@ body::before {
   from { transform: translateY(0); }
   to { transform: translateY(-100px); }
 }
-    /* ---------------- HEADER ---------------- */
     header {
       display: flex;
       align-items: center;
@@ -104,7 +101,6 @@ body::before {
     .profile:hover .profile-dropdown {
       display: block;
     }
-    /* ------------------ NAV ------------------ */
     nav {
       width: 100%;
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
@@ -138,7 +134,6 @@ body::before {
       background: rgba(255,255,255,0.1);
       border-radius: 6px;
     }
-    /* Dropdown */
     .dropdown {
       position: relative;
     }
@@ -163,7 +158,6 @@ body::before {
     .dropdown:hover .dropdown-content {
       display: block;
     }
-    /* Search box */
     .search-box {
       position: absolute;
       right: 20px;
@@ -176,7 +170,6 @@ body::before {
       font-size: 0.9em;
       text-align: right;
     }
-    /* ------------------ MAIN ------------------ */
     main {
       flex: 1;
       display: flex;
@@ -196,7 +189,7 @@ body::before {
       box-shadow: 0 2px 6px rgba(0,0,0,0.5);
       padding: 40px;
       border-radius: 12px;
-      backdrop-filter: blur(6px); /* frosted glass effect */
+      backdrop-filter: blur(6px); 
     }
     h1 {
       font-size: 3em;
